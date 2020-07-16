@@ -38,13 +38,7 @@ Check out what's new in the [latest releases](https://github.com/PyvesB/eclipse-
 
 Note that all themes require Eclipse 2020-06 or more recent.
 
-You can download and install the plugin via the [Eclipse Marketplace](https://marketplace.eclipse.org/content/planet-themes/), or simply drag the below button to your running Eclipse workspace:
-
-<p align="center">
-<a href="http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=4611382" class="drag" title="Drag to your running Eclipse workspace. Requires Eclipse Marketplace Client"><img typeof="foaf:Image" class="img-responsive" src="https://marketplace.eclipse.org/sites/all/themes/solstice/public/images/marketplace/btn-install.png" alt="Drag to your running Eclipse workspace. Requires Eclipse Marketplace Client" /></a>
-</p>
-
-Alternatively, use the following update site: `https://raw.githubusercontent.com/PyvesB/eclipse-planet-themes/updatesite`
+Marketplace links coming soon! For now, use the following update site: `https://raw.githubusercontent.com/PyvesB/eclipse-planet-themes/updatesite`
 
 ## :star: Support and feedback
 
