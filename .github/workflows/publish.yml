@@ -21,8 +21,8 @@ jobs:
       run: |
         git checkout updatesite
         mv -v planet-themes-updatesite/target/repository/* .
-        git config user.name $(jq .pusher.username $GITHUB_PAYLOAD)
-        git config user.email $(jq .pusher.email $GITHUB_PAYLOAD)
+        git config user.name 'PyvesB'
+        git config user.email 'pyvesdev@gmail.com'
         git add -A
         git commit -m "Added version $(curl --silent https://api.github.com/repos/PyvesB/eclipse-planet-themes/releases/latest | grep '\"tag_name\":' | sed -E 's/.*\"([^\"]+)\".*/\1/') to the update site"
         git remote add pages https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/PyvesB/eclipse-planet-themes.git
