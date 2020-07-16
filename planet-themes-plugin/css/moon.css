@@ -1,0 +1,36 @@
+@import url("platform:/plugin/io.github.pyvesb.eclipse_planet_themes/css/planets.css");
+
+ColorDefinition#io-github-pyvesb-eclipse_planet_themes-BACKGROUND_COLOR {
+  color: #f1f1f1;
+}
+
+ColorDefinition#io-github-pyvesb-eclipse_planet_themes-ACCENT_COLOR {
+  color: #909090;
+}
+
+ColorDefinition#io-github-pyvesb-eclipse_planet_themes-INTERACTION_COLOR {
+  color: white;
+}
+
+IEclipsePreferences#org-eclipse-ui-editors:io-github-pyvesb-eclipse_planet_themes-moon {
+  preferences:
+    'AbstractTextEditor.Color.Background=241,241,241'
+    'AbstractTextEditor.Color.SelectionBackground=190,190,190'
+    'currentLineColor=220,220,220'
+    'searchResultIndicationColor=128,128,128';
+}
+
+IEclipsePreferences#org-eclipse-ui-workbench:io-github-pyvesb-eclipse_planet_themes-moon {
+  preferences:
+    'CONTENT_ASSIST_BACKGROUND_COLOR=241,241,241'
+    'org.eclipse.jdt.ui.Javadoc.backgroundColor=241,241,241'
+    'org.eclipse.ui.workbench.INFORMATION_BACKGROUND=241,241,241';
+}
+
+IEclipsePreferences#org-eclipse-debug-ui:io-github-pyvesb-eclipse_planet_themes-moon {
+  preferences: 'org.eclipse.debug.ui.consoleBackground=241,241,241';
+}
+
+IEclipsePreferences#org-eclipse-jdt-ui:io-github-pyvesb-eclipse_planet_themes-neptune {
+  preferences: 'sourceHoverBackgroundColor=241,241,241';
+}

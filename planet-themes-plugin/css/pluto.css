@@ -1,0 +1,111 @@
+@import url("platform:/plugin/io.github.pyvesb.eclipse_planet_themes/css/planets.css");
+@import url("platform:/plugin/io.github.pyvesb.eclipse_planet_themes/css/planets-dark.css");
+
+ColorDefinition#io-github-pyvesb-eclipse_planet_themes-BACKGROUND_COLOR {
+  color: #221f23;
+}
+
+ColorDefinition#io-github-pyvesb-eclipse_planet_themes-ACCENT_COLOR {
+  color: #7454e1;
+}
+
+ColorDefinition#io-github-pyvesb-eclipse_planet_themes-INTERACTION_COLOR {
+  color: #1e1b1e;
+}
+
+IEclipsePreferences#org-eclipse-ui-workbench:io-github-pyvesb-eclipse_planet_themes-pluto {
+  preferences:
+    'ACTIVE_HYPERLINK_COLOR=236,154,24'
+    'CONTENT_ASSIST_BACKGROUND_COLOR=34,31,35'
+    'HYPERLINK_COLOR=236,154,24'
+    'org.eclipse.egit.ui.UncommittedChangeBackgroundColor=30,27,30'
+    'org.eclipse.jdt.ui.Javadoc.backgroundColor=34,31,35'
+    'org.eclipse.search.ui.match.highlight=66,50,84'
+    'org.eclipse.ui.editors.rangeIndicatorColor=116,84,225'
+    'org.eclipse.ui.workbench.INFORMATION_BACKGROUND=34,31,35'
+    'cucumber.eclipse.editor.presentation.gherkin_comment_colour=240,218,196'
+    'cucumber.eclipse.editor.presentation.gherkin_keyword_colour=236,154,24'
+    'cucumber.eclipse.editor.presentation.gherkin_numeric_literal_colour=189,51,30'
+    'cucumber.eclipse.editor.presentation.gherkin_step_colour=116,84,225'
+    'cucumber.eclipse.editor.presentation.gherkin_string_colour=189,51,30'
+    'cucumber.eclipse.editor.presentation.gherkin_tag_colour=189,51,30';
+}
+
+IEclipsePreferences#org-eclipse-ui-editors:io-github-pyvesb-eclipse_planet_themes-pluto {
+  preferences:
+    'AbstractTextEditor.Color.SelectionBackground=80,71,82'
+    'AbstractTextEditor.Color.Background=34,31,35'
+    'currentIPColor=101,90,104'
+    'currentLineColor=64,57,66'
+    'occurrenceIndicationColor=80,71,82'
+    'matchingBracketsColor=236,154,24'
+    'searchResultIndicationColor=133,51,234'
+    'secondaryIPColor=101,90,104'
+    'writeOccurrenceIndicationColor=101,90,104';
+}
+
+IEclipsePreferences#org-eclipse-debug-ui:io-github-pyvesb-eclipse_planet_themes-pluto {
+  preferences:
+    'org.eclipse.debug.ui.consoleBackground=34,31,35'
+    'org.eclipse.debug.ui.errorColor=189,51,30'
+    'org.eclipse.debug.ui.inColor=223,153,84';
+}
+
+IEclipsePreferences#org-eclipse-jdt-ui:io-github-pyvesb-eclipse_planet_themes-pluto {
+  preferences:
+    'java_bracket=236,154,24'
+    'java_comment_task_tag=236,154,24'
+    'java_doc_default=236,154,24'
+    'java_doc_keyword=236,154,24'
+    'java_doc_link=236,154,24'
+    'java_doc_tag=236,154,24'
+    'java_keyword=116,84,225'
+    'java_keyword_return=116,84,225'
+    'java_multi_line_comment=240,218,196'
+    'java_operator=236,154,24'
+    'java_single_line_comment=240,218,196'
+    'java_string=189,51,30'
+    'pf_coloring_argument=189,51,30'
+    'pf_coloring_comment=240,218,196'
+    'pf_coloring_key=116,84,225'
+    'semanticHighlighting.annotation.color=189,51,30'
+    'semanticHighlighting.field.color=219,162,38'
+    'semanticHighlighting.number.color=189,51,30'
+    'semanticHighlighting.staticField.color=219,162,38'
+    'semanticHighlighting.staticFinalField.color=219,162,38'
+    'sourceHoverBackgroundColor=34,31,35';
+}
+
+IEclipsePreferences#org-eclipse-wst-xml-ui:io-github-pyvesb-eclipse_planet_themes-pluto {
+  preferences:
+    'cdataBorder=#7454e9 | null | false | false | false | false'
+    'commentBorder=#f0dac4 | null | false | false | false | false'
+    'commentText=#f0dac4 | null | false | false | false | false'
+    'declBorder=#ec9a18 | null | false | false | false | false'
+    'doctypeExternalId=#7454e1 | null | false | false | false | false'
+    'doctypeExternalPubref=#7454e1 | null | false | false | false | false'
+    'doctypeExtrenalSysref=#7454e1 | null | false | false | false | false'
+    'doctypeName=#bd331e | null | false | false | false | false'
+    'piBorder=#ec9a18 | null | false | false | false | false'
+    'tagAttributeName=#7454e1 | null | false | false | false | false'
+    'tagAttributeValue=#7454e1 | null | false | true | false | false'
+    'tagBorder=#ec9a18 | null | false | false | false | false'
+    'tagName=#7454e1 | null | true | false | false | false';
+}
+
+IEclipsePreferences#org-python-pydev:io-github-pyvesb-eclipse_planet_themes-pluto {
+  preferences:
+    'BACKQUOTES_COLOR=116,84,225'
+    'CLASS_NAME_COLOR=223,153,84'
+    'COMMENT_COLOR=240,218,196'
+    'DECORATOR_COLOR=189,51,30'
+    'DOCSTRING_MARKUP_COLOR=236,154,24'
+    'EDITOR_MATCHING_BRACKETS_COLOR=236,154,24'
+    'KEYWORD_COLOR=116,84,225'
+    'NUMBER_COLOR=189,51,30'
+    'OPERATORS_COLOR=236,154,24'
+    'PARENS_COLOR=236,154,24'
+    'SELF_COLOR=219,162,38'
+    'STRING_COLOR=189,51,30'
+    'UNICODE_COLOR=189,51,30';
+}

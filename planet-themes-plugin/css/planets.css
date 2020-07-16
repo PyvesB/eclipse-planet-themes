@@ -1,0 +1,132 @@
+CTabFolder {
+  padding: 0px 0px 1px 0px;
+  swt-tab-renderer: url('bundleclass://org.eclipse.e4.ui.workbench.renderers.swt/org.eclipse.e4.ui.workbench.renderers.swt.CTabRendering');
+  swt-corner-radius: 0px;
+  swt-tab-outline: '#io-github-pyvesb-eclipse_planet_themes-BACKGROUND_COLOR';
+  swt-selected-tab-fill: '#io-github-pyvesb-eclipse_planet_themes-BACKGROUND_COLOR';
+  swt-outer-keyline-color: '#io-github-pyvesb-eclipse_planet_themes-BACKGROUND_COLOR';
+  swt-unselected-hot-tab-color-background: '#io-github-pyvesb-eclipse_planet_themes-BACKGROUND_COLOR'; 
+  swt-unselected-tabs-color: '#io-github-pyvesb-eclipse_planet_themes-BACKGROUND_COLOR';
+  swt-maximize-visible: false;
+  swt-selected-tab-highlight: '#io-github-pyvesb-eclipse_planet_themes-ACCENT_COLOR';
+  swt-selected-highlight-top: true;
+  swt-shadow-visible: false;
+}
+
+CTabFolder.active {
+  swt-selected-tab-highlight: none;
+  swt-tab-outline: '#io-github-pyvesb-eclipse_planet_themes-ACCENT_COLOR';
+  swt-selected-tab-fill: '#io-github-pyvesb-eclipse_planet_themes-ACCENT_COLOR';
+}
+
+Composite#org-eclipse-ui-editorss * CTabFolder {
+  swt-minimize-visible: false;
+}
+
+.MToolBar.Draggable,
+.MToolControl.TrimStack,
+.MToolControl.Draggable {
+  handle-image: url('platform:/plugin/io.github.pyvesb.eclipse_planet_themes/images/handle.png');
+  handle-image-rotated: url('platform:/plugin/io.github.pyvesb.eclipse_planet_themes/images/handle-rotated.png');
+}
+
+CTabFolder.active > CTabItem:selected {
+  color: white;
+}
+
+CTabItem {
+  color: none;
+  swt-show-close: false;
+}
+
+Shell, Shell * {
+  background-color:'#io-github-pyvesb-eclipse_planet_themes-BACKGROUND_COLOR';
+}
+
+Shell[swt-data-class ~= 'org.eclipse.jface.dialogs.PopupDialog'] *,
+Button[style~='SWT.PUSH'],
+Text[style~='SWT.BORDER'],
+Combo,
+CCombo,
+List,
+Spinner,
+TreeAdapter,
+TableAdapter {
+  background-color: '#io-github-pyvesb-eclipse_planet_themes-INTERACTION_COLOR';
+}
+
+Tree, Table {
+  background-color: '#io-github-pyvesb-eclipse_planet_themes-INTERACTION_COLOR';
+  swt-header-background-color: '#io-github-pyvesb-eclipse_planet_themes-INTERACTION_COLOR';
+}
+
+Form, Section, ExpandableComposite {
+  tb-toggle-color: '#io-github-pyvesb-eclipse_planet_themes-ACCENT_COLOR';
+  tb-toggle-hover-color: '#io-github-pyvesb-eclipse_planet_themes-ACCENT_COLOR';
+}
+
+Form {
+  h-hover-full-color: '#io-github-pyvesb-eclipse_planet_themes-BACKGROUND_COLOR';
+  h-hover-light-color: '#io-github-pyvesb-eclipse_planet_themes-BACKGROUND_COLOR';
+  h-bottom-keyline-2-color: '#io-github-pyvesb-eclipse_planet_themes-ACCENT_COLOR';
+  h-bottom-keyline-1-color: '#io-github-pyvesb-eclipse_planet_themes-ACCENT_COLOR';
+  swt-background-mode: 'force';
+  text-background-color: '#io-github-pyvesb-eclipse_planet_themes-BACKGROUND_COLOR';
+}
+
+TabbedPropertyTitle {
+  swt-backgroundgradientstart-color: '#io-github-pyvesb-eclipse_planet_themes-BACKGROUND_COLOR';
+  swt-backgroundgradientend-color: '#io-github-pyvesb-eclipse_planet_themes-BACKGROUND_COLOR';
+  swt-backgroundbottomkeyline1-color: '#io-github-pyvesb-eclipse_planet_themes-ACCENT_COLOR';
+  swt-backgroundbottomkeyline2-color: '#io-github-pyvesb-eclipse_planet_themes-ACCENT_COLOR';
+}
+
+Section {
+  background-color-gradient-titlebar: '#io-github-pyvesb-eclipse_planet_themes-BACKGROUND_COLOR';
+  background-color-titlebar: '#io-github-pyvesb-eclipse_planet_themes-BACKGROUND_COLOR';
+  border-color-titlebar: '#io-github-pyvesb-eclipse_planet_themes-BACKGROUND_COLOR';
+}
+
+ColorDefinition#io-github-pyvesb-eclipse_planet_themes-BACKGROUND_COLOR {
+  category: '#io-github-pyvesb-eclipse_planet_themes-themeElementCategory';
+  label: 'Background Color';
+  description: 'The background color of most visual elements.';
+}
+
+ColorDefinition#io-github-pyvesb-eclipse_planet_themes-ACCENT_COLOR {
+  category: '#io-github-pyvesb-eclipse_planet_themes-themeElementCategory';
+  label: 'Accent Color';
+  description: 'The color for tab highlights, keylines and scrollbars on Windows.';
+}
+
+ColorDefinition#io-github-pyvesb-eclipse_planet_themes-INTERACTION_COLOR {
+  category: '#io-github-pyvesb-eclipse_planet_themes-themeElementCategory';
+  label: 'Interaction Color';
+  description: 'The background color for buttons, various selectable elements, trees and tables.';
+}
+
+ThemesExtension {
+  color-definition:
+    '#io-github-pyvesb-eclipse_planet_themes-BACKGROUND_COLOR',
+    '#io-github-pyvesb-eclipse_planet_themes-ACCENT_COLOR',
+    '#io-github-pyvesb-eclipse_planet_themes-INTERACTION_COLOR';
+}
+
+IEclipsePreferences#org-eclipse-ui-editors:io-github-pyvesb-eclipse_planet_themes-planets {
+  preferences:
+    'AbstractTextEditor.Color.Background.SystemDefault=false'
+    'AbstractTextEditor.Color.SelectionBackground.SystemDefault=false'
+    'AbstractTextEditor.Color.SelectionForeground.SystemDefault=false'
+    'AbstractTextEditor.Color.SelectionForeground=0,0,0'
+    'searchResultIndication=true'
+    'searchResultHighlighting=false'
+    'searchResultTextStyle=DASHED_BOX';
+}
+
+IEclipsePreferences#org-eclipse-jdt-ui:io-github-pyvesb-eclipse_planet_themes-planets {
+  preferences:
+    'java_keyword_bold=true'
+    'java_keyword_return_bold=true'
+    'semanticHighlighting.methodDeclarationName.enabled=true'
+    'semanticHighlighting.methodDeclarationName.bold=true';
+}

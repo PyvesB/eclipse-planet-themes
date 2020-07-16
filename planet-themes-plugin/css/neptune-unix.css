@@ -1,0 +1,6 @@
+@import url("platform:/plugin/io.github.pyvesb.eclipse_planet_themes/css/neptune.css");
+@import url("platform:/plugin/io.github.pyvesb.eclipse_planet_themes/css/planets-unix.css");
+
+Button[style~='SWT.PUSH'] {
+  background-color: unset;
+}

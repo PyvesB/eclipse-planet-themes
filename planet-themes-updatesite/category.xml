@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <description name="Planet Themes update site" url="https://pyvesb.github.io/eclipse-planet-themes/">
+      The Planet Themes plugin update site.
+   </description>
+   <feature id="io.github.pyvesb.eclipse_planet_themes">
+      <category name="io.github.pyvesb.eclipse_planet_themes"/>
+   </feature>
+   <category-def name="io.github.pyvesb.eclipse_planet_themes" label="Planet Themes">
+      <description>
+         Collection of light and dark Eclipse themes, inspired by planets of the Solar System.
+      </description>
+   </category-def>
+</site>

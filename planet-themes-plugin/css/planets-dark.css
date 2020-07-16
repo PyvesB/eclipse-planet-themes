@@ -1,0 +1,75 @@
+Shell * {
+  color: #cacaca;
+}
+
+Tree, Table {
+  swt-header-color: #cacaca;
+}
+
+ExpandableComposite, Section {
+  swt-titlebar-color: #cacaca;
+}
+
+HeapStatus {
+  color: none;
+}
+
+IEclipsePreferences#org-eclipse-ui-workbench:io-github-pyvesb-eclipse_planet_themes-planets-dark {
+  preferences:
+    'ADDITION_COLOR=60,228,60'
+    'CONFLICTING_COLOR=240,15,66'
+    'CONTENT_ASSIST_FOREGROUND_COLOR=202,202,202'
+    'EDITION_COLOR=228,228,228'
+    'DELETION_COLOR=228,60,60'
+    'INCOMING_COLOR=31,179,235'
+    'OUTGOING_COLOR=238,238,238'
+    'RESOLVED_COLOR=108,210,17'
+    'cucumber.eclipse.editor.presentation.gherkin_text_colour=202,202,202'
+    'org.eclipse.egit.ui.IgnoredResourceForegroundColor=202,202,202'
+    'org.eclipse.egit.ui.UncommittedChangeForegroundColor=202,202,202'
+    'org.eclipse.jdt.ui.Javadoc.foregroundColor=202,202,202'
+    'org.eclipse.ui.workbench.INFORMATION_FOREGROUND=202,202,202';
+}
+
+IEclipsePreferences#org-eclipse-jdt-ui:io-github-pyvesb-eclipse_planet_themes-planets-dark {
+  preferences:
+    'java_default=202,202,202'
+    'pf_coloring_value=202,202,202'
+    'pf_coloring_assignment=155,155,155'
+    'semanticHighlighting.abstractMethodInvocation.color=202,202,202'
+    'semanticHighlighting.annotation.enabled=true'
+    'semanticHighlighting.inheritedMethodInvocation.color=202,202,202'
+    'semanticHighlighting.localVariable.color=155,155,155'
+    'semanticHighlighting.methodDeclarationName.color=202,202,202'
+    'semanticHighlighting.number.enabled=true'
+    'semanticHighlighting.staticMethodInvocation.color=202,202,202';
+}
+
+IEclipsePreferences#org-eclipse-ui-editors:io-github-pyvesb-eclipse_planet_themes-planets-dark {
+  preferences:
+    'AbstractTextEditor.Color.Foreground.SystemDefault=false'
+    'AbstractTextEditor.Color.Foreground=202,202,202'
+    'hyperlinkColor.SystemDefault=false'
+    'fullcoverage_color=6,74,6'
+    'nocoverage_color=95,5,5'
+    'partialcoverage_color=90,90,0';
+}
+
+IEclipsePreferences#org-eclipse-debug-ui:io-github-pyvesb-eclipse_planet_themes-planets-dark {
+  preferences:
+    'org.eclipse.debug.ui.MemoryHistoryKnownColor=235,235,235'
+    'org.eclipse.debug.ui.MemoryHistoryUnknownColor=170,175,185'
+    'org.eclipse.debug.ui.PREF_CHANGED_VALUE_BACKGROUND=95,5,5'
+    'org.eclipse.debug.ui.changedDebugElement=255,128,128'
+    'org.eclipse.debug.ui.outColor=202,202,202';
+}
+
+IEclipsePreferences#org-eclipse-wst-xml-ui:io-github-pyvesb-eclipse_planet_themes-planets-dark {
+  preferences: 'cdataText=#9b9b9b | null | false | false | false | false';
+}
+
+IEclipsePreferences#org-python-pydev:io-github-pyvesb-eclipse_planet_themes-planets-dark {
+  preferences:
+    'CODE_COLOR=202,202,202'
+    'FUNC_NAME_COLOR=202,202,202';
+}
