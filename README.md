@@ -8,23 +8,14 @@
 <a href="https://github.com/PyvesB/eclipse-planet-themes/stargazers">
 <img src ="https://img.shields.io/github/stars/PyvesB/eclipse-planet-themes.svg" />
 </a>
-<a href="https://marketplace.eclipse.org/content/planet-themes">
-<img src ="https://img.shields.io/eclipse-marketplace/v/planet-themes.svg" />
-</a>
-<a href="https://marketplace.eclipse.org/content/planet-themes">
-<img src ="https://img.shields.io/eclipse-marketplace/favorites/planet-themes.svg" />
-</a>
-<a href="https://marketplace.eclipse.org/content/planet-themes">
-<img src ="https://img.shields.io/eclipse-marketplace/dt/planet-themes.svg" />
-</a>
 
 **Collection of light and dark Eclipse themes, inspired by planets of the Solar System!**
 
 <p align="center" style="font-size:5px;">
 <br />
-<img src ="https://github.com/PyvesB/eclipse-planet-themes/blob/master/images/neptune.png?raw=true" width="420" />
-<img src ="https://github.com/PyvesB/eclipse-planet-themes/blob/master/images/pluto.png?raw=true" width="420" />
-<img src ="https://github.com/PyvesB/eclipse-planet-themes/blob/master/images/moon.png?raw=true" width="420" />
+<img src ="https://github.com/PyvesB/eclipse-planet-themes/blob/master/images/neptune.png?raw=true" width="400" />
+<img src ="https://github.com/PyvesB/eclipse-planet-themes/blob/master/images/pluto.png?raw=true" width="400" />
+<img src ="https://github.com/PyvesB/eclipse-planet-themes/blob/master/images/moon.png?raw=true" width="400" />
 <br />
 <i><sub>Left to right, top to bottom: Neptune, Pluto and Moon!</sub></i>
 </p>
