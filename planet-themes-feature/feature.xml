@@ -290,7 +290,7 @@ version(s), and exceptions or additional permissions here}.&quot;
    </license>
 
    <url>
-      <update label="Planet Themes update site" url="https://pyvesb.github.io/eclipse-planet-themes/"/>
+      <update label="Planet Themes update site" url="https://raw.githubusercontent.com/PyvesB/eclipse-planet-themes/updatesite"/>
    </url>
 
    <plugin
