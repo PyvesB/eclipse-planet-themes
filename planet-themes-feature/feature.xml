@@ -302,10 +302,9 @@ version(s), and exceptions or additional permissions here}.&quot;
 
    <plugin
          id="com.codeaffine.eclipse.swt"
-         os="win32"
          download-size="188"
          install-size="188"
-         version="0.6.0.20200716-1344"
+         version="0.6.0.20200717-1045"
          unpack="false"/>
 
    <plugin
@@ -313,16 +312,15 @@ version(s), and exceptions or additional permissions here}.&quot;
          os="win32"
          download-size="2"
          install-size="2"
-         version="0.6.0.20200716-1344"
+         version="0.6.0.20200717-1045"
          fragment="true"
          unpack="false"/>
 
    <plugin
          id="com.codeaffine.eclipse.ui.swt.theme"
-         os="win32"
          download-size="40"
          install-size="40"
-         version="0.8.0.20200716-1344"
+         version="0.8.0.20200717-1045"
          unpack="false"/>
 
    <plugin
@@ -330,16 +328,15 @@ version(s), and exceptions or additional permissions here}.&quot;
          os="win32"
          download-size="1"
          install-size="1"
-         version="0.8.0.20200716-1344"
+         version="0.8.0.20200717-1045"
          fragment="true"
          unpack="false"/>
 
    <plugin
          id="com.codeaffine.util"
-         os="win32"
          download-size="8"
          install-size="8"
-         version="0.1.0.20200716-1344"
+         version="0.1.0.20200717-1045"
          unpack="false"/>
 
 </feature>
