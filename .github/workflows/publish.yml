@@ -19,11 +19,18 @@ jobs:
       run: mvn clean install
     - name: Commit files
       run: |
+        echo "Checking out update site"
         git checkout updatesite
+        echo "Cleaning up previous files"
+        git rm -r .
+        echo "Coping files over"
         mv -v planet-themes-updatesite/target/repository/* .
+        echo "Setting up Git config"
         git config user.name 'PyvesB'
         git config user.email 'pyvesdev@gmail.com'
+        echo "Preparing commit"
         git add -A
         git commit -m "Added version $(curl --silent https://api.github.com/repos/PyvesB/eclipse-planet-themes/releases/latest | grep '\"tag_name\":' | sed -E 's/.*\"([^\"]+)\".*/\1/') to the update site"
         git remote add pages https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/PyvesB/eclipse-planet-themes.git
+        echo "Pushing commit"
         git push pages updatesite -f
