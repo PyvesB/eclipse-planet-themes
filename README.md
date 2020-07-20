@@ -8,16 +8,25 @@
 <a href="https://github.com/PyvesB/eclipse-planet-themes/stargazers">
 <img src ="https://img.shields.io/github/stars/PyvesB/eclipse-planet-themes.svg" />
 </a>
+<a href="https://marketplace.eclipse.org/content/planet-themes">
+<img src ="https://img.shields.io/eclipse-marketplace/v/planet-themes.svg" />
+</a>
+<a href="https://marketplace.eclipse.org/content/planet-themes">
+<img src ="https://img.shields.io/eclipse-marketplace/favorites/planet-themes.svg" />
+</a>
+<a href="https://marketplace.eclipse.org/content/planet-themes">
+<img src ="https://img.shields.io/eclipse-marketplace/dt/planet-themes.svg" />
+</a>
 
 **Collection of light and dark Eclipse themes, inspired by planets of the Solar System!**
 
-<p align="center" style="font-size:5px;">
+<p align="center" style="font-size:6px;">
 <br />
-<img src ="https://github.com/PyvesB/eclipse-planet-themes/blob/master/images/neptune.png?raw=true" width="400" />
-<img src ="https://github.com/PyvesB/eclipse-planet-themes/blob/master/images/pluto.png?raw=true" width="400" />
-<img src ="https://github.com/PyvesB/eclipse-planet-themes/blob/master/images/moon.png?raw=true" width="400" />
+<img src ="https://github.com/PyvesB/eclipse-planet-themes/blob/master/images/neptune.png?raw=true" width="32%" />
+<img src ="https://github.com/PyvesB/eclipse-planet-themes/blob/master/images/pluto.png?raw=true" width="32%" />
+<img src ="https://github.com/PyvesB/eclipse-planet-themes/blob/master/images/moon.png?raw=true" width="32%" />
 <br />
-<i><sub>Left to right, top to bottom: Neptune, Pluto and Moon!</sub></i>
+<i><sub>Left to right: the Neptune, Pluto and Moon themes!</sub></i>
 </p>
 
 ## :moon: Features at a glance
@@ -38,7 +47,13 @@ Check out what's new in the [latest releases](https://github.com/PyvesB/eclipse-
 
 Note that all themes require Eclipse 2020-06 or more recent.
 
-Marketplace links coming soon! For now, use the following update site: `https://raw.githubusercontent.com/PyvesB/eclipse-planet-themes/updatesite`
+You can download and install the plugin via the [Eclipse Marketplace](https://marketplace.eclipse.org/content/planet-themes/), or simply drag the below button to your running Eclipse workspace:
+
+<p align="center">
+<a href="http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=4611382" class="drag" title="Drag to your running Eclipse workspace. Requires Eclipse Marketplace Client"><img typeof="foaf:Image" class="img-responsive" src="https://marketplace.eclipse.org/sites/all/themes/solstice/public/images/marketplace/btn-install.png" alt="Drag to your running Eclipse workspace. Requires Eclipse Marketplace Client" /></a>
+</p>
+
+Alternatively, use the following update site: `https://raw.githubusercontent.com/PyvesB/eclipse-planet-themes/updatesite`
 
 ## :star: Support and feedback
 
