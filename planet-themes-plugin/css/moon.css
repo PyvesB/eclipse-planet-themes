@@ -23,6 +23,7 @@ IEclipsePreferences#org-eclipse-ui-editors:io-github-pyvesb-eclipse_planet_theme
 IEclipsePreferences#org-eclipse-ui-workbench:io-github-pyvesb-eclipse_planet_themes-moon {
   preferences:
     'CONTENT_ASSIST_BACKGROUND_COLOR=241,241,241'
+    'org.eclipse.egit.ui.UncommittedChangeBackgroundColor=255,255,255'
     'org.eclipse.jdt.ui.Javadoc.backgroundColor=241,241,241'
     'org.eclipse.ui.workbench.INFORMATION_BACKGROUND=241,241,241';
 }
