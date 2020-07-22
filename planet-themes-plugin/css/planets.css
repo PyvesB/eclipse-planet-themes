@@ -19,6 +19,14 @@ CTabFolder.active {
   swt-selected-tab-fill: '#io-github-pyvesb-eclipse_planet_themes-ACCENT_COLOR';
 }
 
+/* CTabFolders within dialogs do not support the active pseudo CSS class. */
+Shell[swt-data-class ~= 'org.eclipse.jface.dialogs.Dialog'] * CTabFolder {
+  padding: 0px ;
+  swt-selected-tab-highlight: none;
+  swt-tab-outline: '#io-github-pyvesb-eclipse_planet_themes-ACCENT_COLOR';
+  swt-selected-tab-fill: '#io-github-pyvesb-eclipse_planet_themes-ACCENT_COLOR';
+}
+
 Composite#org-eclipse-ui-editorss * CTabFolder {
   swt-minimize-visible: false;
 }
@@ -30,7 +38,8 @@ Composite#org-eclipse-ui-editorss * CTabFolder {
   handle-image-rotated: url('platform:/plugin/io.github.pyvesb.eclipse_planet_themes/images/handle-rotated.png');
 }
 
-CTabFolder.active > CTabItem:selected {
+CTabFolder.active > CTabItem:selected,
+Shell[swt-data-class ~= 'org.eclipse.jface.dialogs.Dialog'] * CTabFolder > CTabItem:selected {
   color: white;
 }
 
