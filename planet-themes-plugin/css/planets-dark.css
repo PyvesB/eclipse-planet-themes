@@ -10,6 +10,10 @@ ExpandableComposite, Section {
   swt-titlebar-color: #cacaca;
 }
 
+CTabItem:selected {
+  color: #ececec;
+}
+
 HeapStatus {
   color: none;
 }
