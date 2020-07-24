@@ -20,6 +20,8 @@ IEclipsePreferences#org-eclipse-ui-workbench:io-github-pyvesb-eclipse_planet_the
     'HYPERLINK_COLOR=236,154,24'
     'org.eclipse.egit.ui.UncommittedChangeBackgroundColor=30,27,30'
     'org.eclipse.jdt.ui.Javadoc.backgroundColor=34,31,35'
+    'org.eclipse.jface.REVISION_NEWEST_COLOR=160,120,40'
+    'org.eclipse.jface.REVISION_OLDEST_COLOR=70,45,3'
     'org.eclipse.search.ui.match.highlight=66,50,84'
     'org.eclipse.ui.editors.rangeIndicatorColor=116,84,225'
     'org.eclipse.ui.workbench.INFORMATION_BACKGROUND=34,31,35'
