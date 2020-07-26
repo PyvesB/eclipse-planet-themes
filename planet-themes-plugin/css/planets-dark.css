@@ -54,6 +54,7 @@ IEclipsePreferences#org-eclipse-ui-editors:io-github-pyvesb-eclipse_planet_theme
   preferences:
     'AbstractTextEditor.Color.Foreground.SystemDefault=false'
     'AbstractTextEditor.Color.Foreground=202,202,202'
+    'changeIndicationColor=0,0,0'
     'hyperlinkColor.SystemDefault=false'
     'fullcoverage_color=6,74,6'
     'nocoverage_color=95,5,5'
