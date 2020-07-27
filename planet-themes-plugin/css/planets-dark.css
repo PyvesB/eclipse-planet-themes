@@ -77,5 +77,7 @@ IEclipsePreferences#org-eclipse-wst-xml-ui:io-github-pyvesb-eclipse_planet_theme
 IEclipsePreferences#org-python-pydev:io-github-pyvesb-eclipse_planet_themes-planets-dark {
   preferences:
     'CODE_COLOR=202,202,202'
-    'FUNC_NAME_COLOR=202,202,202';
+    'FUNC_NAME_COLOR=202,202,202'
+    'FUNC_NAME_STYLE=1'
+    'KEYWORD_STYLE=1';
 }
