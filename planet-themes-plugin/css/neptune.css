@@ -41,8 +41,9 @@ IEclipsePreferences#org-eclipse-ui-editors:io-github-pyvesb-eclipse_planet_theme
     'currentIPColor=86,83,117'
     'currentLineColor=55,62,89'
     'deletionIndicationColor=82,117,237'
-    'occurrenceIndicationColor=71,80,113'
     'matchingBracketsColor=38,144,219'
+    'occurrenceIndicationColor=71,80,113'
+    'pydevOccurrenceIndicationColor=71,80,113'
     'searchResultIndicationColor=125,140,250'
     'secondaryIPColor=86,83,117'
     'writeOccurrenceIndicationColor=86,83,117';
