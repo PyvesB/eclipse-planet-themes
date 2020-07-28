@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Planet Themes
 Bundle-SymbolicName: io.github.pyvesb.eclipse_planet_themes;singleton:=true
-Bundle-Version: 0.1.3
+Bundle-Version: 0.1.4
 Automatic-Module-Name: io.github.pyvesb.eclipse_planet_themes
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
