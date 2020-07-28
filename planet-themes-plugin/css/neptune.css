@@ -22,7 +22,7 @@ IEclipsePreferences#org-eclipse-ui-workbench:io-github-pyvesb-eclipse_planet_the
     'org.eclipse.jdt.ui.Javadoc.backgroundColor=40,46,67'
     'org.eclipse.jface.REVISION_NEWEST_COLOR=30,80,160'
     'org.eclipse.jface.REVISION_OLDEST_COLOR=3,25,70'
-    'org.eclipse.search.ui.match.highlight=55,62,89'
+    'org.eclipse.search.ui.match.highlight=55,60,85'
     'org.eclipse.ui.editors.rangeIndicatorColor=82,117,237'
     'org.eclipse.ui.workbench.INFORMATION_BACKGROUND=40,46,67'
     'cucumber.eclipse.editor.presentation.gherkin_comment_colour=196,217,240'
@@ -35,18 +35,18 @@ IEclipsePreferences#org-eclipse-ui-workbench:io-github-pyvesb-eclipse_planet_the
 
 IEclipsePreferences#org-eclipse-ui-editors:io-github-pyvesb-eclipse_planet_themes-neptune {
   preferences:
-    'AbstractTextEditor.Color.SelectionBackground=71,80,113'
+    'AbstractTextEditor.Color.SelectionBackground=63,99,139'
     'AbstractTextEditor.Color.Background=40,46,67'
     'additionIndicationColor=0,0,255'
-    'currentIPColor=86,83,117'
-    'currentLineColor=55,62,89'
+    'currentIPColor=80,80,120'
+    'currentLineColor=55,60,85'
     'deletionIndicationColor=82,117,237'
     'matchingBracketsColor=38,144,219'
-    'occurrenceIndicationColor=71,80,113'
-    'pydevOccurrenceIndicationColor=71,80,113'
+    'occurrenceIndicationColor=70,80,110'
+    'pydevOccurrenceIndicationColor=70,80,110'
     'searchResultIndicationColor=125,140,250'
-    'secondaryIPColor=86,83,117'
-    'writeOccurrenceIndicationColor=86,83,117';
+    'secondaryIPColor=80,80,120'
+    'writeOccurrenceIndicationColor=80,80,120';
 }
 
 IEclipsePreferences#org-eclipse-debug-ui:io-github-pyvesb-eclipse_planet_themes-neptune {
