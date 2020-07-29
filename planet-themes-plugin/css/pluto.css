@@ -114,3 +114,15 @@ IEclipsePreferences#org-python-pydev:io-github-pyvesb-eclipse_planet_themes-plut
     'STRING_COLOR=189,51,30'
     'UNICODE_COLOR=189,51,30';
 }
+
+IEclipsePreferences#org-eclipse-mylyn-wikitext-ui:io-github-pyvesb-eclipse_planet_themes-pluto {
+  preferences:
+    'block-h1=font-size: 120%; font-weight: bold; color: #7454e1;'
+    'block-h2=font-size: 110%; font-weight: bold; color: #7454e1;'
+    'block-h3=font-size: 105%; font-weight: bold; color: #7454e1;'
+    'block-h4=font-weight: bold; color: #7454e1;'
+    'block-h5=font-size: 90%; font-weight: bold; color: #7454e1;'
+    'block-h6=font-size: 80%; font-weight: bold; color: #7454e1;'
+    'phrase-code=font-family: monospace; color:  #7454e1;'
+    'block-bc=font-family: monospace; color: #7454e1;'
+}
