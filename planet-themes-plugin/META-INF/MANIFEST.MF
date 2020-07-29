@@ -10,7 +10,6 @@ Bundle-ClassPath: .
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.swt,
  org.eclipse.ui,
- org.eclipse.ui.themes,
  org.eclipse.e4.ui.css.swt.theme,
  org.eclipse.osgi,
  com.codeaffine.eclipse.ui.swt.theme;resolution:=optional
