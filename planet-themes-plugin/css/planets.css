@@ -53,6 +53,7 @@ Shell, Shell * {
 }
 
 Shell[swt-data-class ~= 'org.eclipse.jface.dialogs.PopupDialog'] *,
+StagingView-18 > StyledText,
 Button[style~='SWT.PUSH'],
 Text[style~='SWT.BORDER'],
 Combo,
