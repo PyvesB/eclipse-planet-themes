@@ -27,6 +27,7 @@ Shell[swt-data-class ~= 'org.eclipse.jface.dialogs.Dialog'] * CTabFolder {
   swt-selected-tab-fill: '#io-github-pyvesb-eclipse_planet_themes-ACCENT_COLOR';
 }
 
+CTabFolder#org-eclipse-ui-editorss,
 Composite#org-eclipse-ui-editorss * CTabFolder {
   swt-minimize-visible: false;
 }
