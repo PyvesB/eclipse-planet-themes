@@ -39,6 +39,11 @@ Composite#org-eclipse-ui-editorss * CTabFolder {
   handle-image-rotated: url('platform:/plugin/io.github.pyvesb.eclipse_planet_themes/images/handle-rotated.png');
 }
 
+.DragFeedback,
+.ModifiedDragFeedback {
+  background-color: '#io-github-pyvesb-eclipse_planet_themes-ACCENT_COLOR';
+}
+
 CTabFolder.active > CTabItem:selected,
 Shell[swt-data-class ~= 'org.eclipse.jface.dialogs.Dialog'] * CTabFolder > CTabItem:selected {
   color: white;
