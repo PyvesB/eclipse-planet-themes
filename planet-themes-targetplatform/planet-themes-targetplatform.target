@@ -15,7 +15,7 @@
 		</location>
 		<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 			<repository location="https://raw.githubusercontent.com/PyvesB/eclipse-planet-themes/xiliary/"/>
-			<unit id="com.codeaffine.eclipse.ui.swt.theme.feature.feature.group" version="0.8.0.20200717-1045"/>
+			<unit id="com.codeaffine.eclipse.ui.swt.theme.feature.feature.group" version="0.8.0.20200802-1642"/>
 		</location>
 	</locations>
 </target>
