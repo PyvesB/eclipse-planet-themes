@@ -126,3 +126,15 @@ IEclipsePreferences#org-eclipse-mylyn-wikitext-ui:io-github-pyvesb-eclipse_plane
     'phrase-code=font-family: monospace; color: #ec9a18;'
     'block-bc=font-family: monospace; color: #ec9a18;'
 }
+
+IEclipsePreferences#org-eclipse-pde-ui:io-github-pyvesb-eclipse_planet_themes-pluto {
+  preferences:
+    'editor.color.externalized_string=240,218,196'
+    'editor.color.header_attributes=116,84,225'
+    'editor.color.header_key=116,84,225'
+    'editor.color.header_osgi=116,84,225'
+    'editor.color.instr=236,154,24'
+    'editor.color.string=236,154,24'
+    'editor.color.tag=116,84,225'
+    'editor.color.xml_comment=240,218,196';
+}

@@ -81,3 +81,17 @@ IEclipsePreferences#org-python-pydev:io-github-pyvesb-eclipse_planet_themes-plan
     'FUNC_NAME_STYLE=1'
     'KEYWORD_STYLE=1';
 }
+
+IEclipsePreferences#org-eclipse-pde-ui:io-github-pyvesb-eclipse_planet_themes-planets-dark {
+  preferences:
+    'editor.color.default=202,202,202'
+    'editor.color.externalized_string_italic=true'
+    'editor.color.header_assignment=155,155,155'
+    'editor.color.header_assignment_bold=true'
+    'editor.color.header_key_bold=true'
+    'editor.color.header_value=202,202,202'
+    'editor.color.header_value_italic=false'
+    'editor.color.instr_bold=true'
+    'editor.color.string_italic=false'
+    'editor.color.tag_bold=true';
+}
