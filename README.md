@@ -55,6 +55,8 @@ You can download and install the plugin via the [Eclipse Marketplace](https://ma
 
 Alternatively, use the following update site: `https://raw.githubusercontent.com/PyvesB/eclipse-planet-themes/updatesite`
 
+Once installed, open Eclipse's preferences, navigate to `General` -> `Appearance` and select the planet of your choice in the `Theme` dropdown. Restart Eclipse and enjoy your new theme!
+
 ## :star: Support and feedback
 
 Building themes is hard work. Something isn't to your taste? Thought of a cool idea? Found a problem or need some help? Simply open an [**issue**](https://github.com/PyvesB/eclipse-planet-themes/issues)!
