@@ -81,8 +81,11 @@ IEclipsePreferences#org-eclipse-jdt-ui:io-github-pyvesb-eclipse_planet_themes-pl
     'semanticHighlighting.annotation.color=189,51,30'
     'semanticHighlighting.field.color=219,162,38'
     'semanticHighlighting.number.color=189,51,30'
+    'semanticHighlighting.recordKeyword.color=116,84,225'
     'semanticHighlighting.staticField.color=219,162,38'
     'semanticHighlighting.staticFinalField.color=219,162,38'
+    'semanticHighlighting.varKeyword.color=116,84,225'
+    'semanticHighlighting.yieldKeyword.color=116,84,225'
     'sourceHoverBackgroundColor=34,31,35';
 }
 

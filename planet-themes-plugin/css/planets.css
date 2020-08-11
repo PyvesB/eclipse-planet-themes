@@ -144,5 +144,8 @@ IEclipsePreferences#org-eclipse-jdt-ui:io-github-pyvesb-eclipse_planet_themes-pl
     'java_keyword_bold=true'
     'java_keyword_return_bold=true'
     'semanticHighlighting.methodDeclarationName.enabled=true'
-    'semanticHighlighting.methodDeclarationName.bold=true';
+    'semanticHighlighting.methodDeclarationName.bold=true'
+    'semanticHighlighting.recordKeyword.bold=true'
+    'semanticHighlighting.varKeyword.bold=true'
+    'semanticHighlighting.yieldKeyword.bold=true';
 }
