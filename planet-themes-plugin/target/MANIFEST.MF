@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: io.github.pyvesb.eclipse_planet_themes
+Bundle-SymbolicName: io.github.pyvesb.eclipse_planet_themes;singleton:
+ =true
+Export-Package: com.codeaffine.eclipse.ui.swt.theme
+Bundle-Name: Planet Themes
+Bundle-Version: 0.1.7
+Bundle-ClassPath: .
+Require-Bundle: org.eclipse.core.runtime,org.eclipse.swt,org.eclipse.u
+ i,org.eclipse.e4.ui.css.swt.theme,org.eclipse.osgi,com.codeaffine.ecl
+ ipse.ui.swt.theme;resolution:=optional
+Bundle-ManifestVersion: 2
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+
