@@ -12,6 +12,11 @@ ColorDefinition#io-github-pyvesb-eclipse_planet_themes-INTERACTION_COLOR {
   color: white;
 }
 
+/* The backgrounds of some SashForms (e.g. Debug Variable view) are not styled unless this is specified again. */
+SashForm {
+  background-color: #f1f1f1;
+}
+
 IEclipsePreferences#org-eclipse-ui-editors:io-github-pyvesb-eclipse_planet_themes-moon {
   preferences:
     'AbstractTextEditor.Color.Background=241,241,241'

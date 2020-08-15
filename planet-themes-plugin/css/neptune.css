@@ -13,6 +13,11 @@ ColorDefinition#io-github-pyvesb-eclipse_planet_themes-INTERACTION_COLOR {
   color: #202437;
 }
 
+/* The backgrounds of some SashForms (e.g. Debug Variable view) are not styled unless this is specified again. */
+SashForm {
+  background-color: #282e43;
+}
+
 IEclipsePreferences#org-eclipse-ui-workbench:io-github-pyvesb-eclipse_planet_themes-neptune {
   preferences:
     'ACTIVE_HYPERLINK_COLOR=38,144,219'
