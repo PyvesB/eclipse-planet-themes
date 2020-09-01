@@ -11,6 +11,7 @@ CTabFolder {
   swt-selected-tab-highlight: '#io-github-pyvesb-eclipse_planet_themes-ACCENT_COLOR';
   swt-selected-highlight-top: true;
   swt-shadow-visible: false;
+  swt-draw-custom-tab-content-background: true;
 }
 
 CTabFolder.active {
