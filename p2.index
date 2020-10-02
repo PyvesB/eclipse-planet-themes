@@ -1,4 +1,4 @@
-#Wed Sep 02 07:25:16 UTC 2020
+#Fri Oct 02 08:07:30 UTC 2020
+artifact.repository.factory.order=artifacts.xml.xz,artifacts.xml,\!
 version=1
 metadata.repository.factory.order=content.xml.xz,content.xml,\!
-artifact.repository.factory.order=artifacts.xml.xz,artifacts.xml,\!
