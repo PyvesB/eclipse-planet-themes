@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?artifactRepository version='1.1.0'?>
+<artifacts size='1'>
+  <artifact classifier='org.eclipse.update.feature' id='io.github.pyvesb.eclipse_planet_themes' version='0.1.11.202010110929'>
+    <properties size='6'>
+      <property name='artifact.size' value='6084'/>
+      <property name='download.size' value='6084'/>
+      <property name='maven-groupId' value='io.github.pyvesb.eclipse_planet_themes'/>
+      <property name='maven-artifactId' value='io.github.pyvesb.eclipse_planet_themes'/>
+      <property name='maven-version' value='0.1.11-SNAPSHOT'/>
+      <property name='download.contentType' value='application/zip'/>
+    </properties>
+  </artifact>
+</artifacts>
