@@ -4,6 +4,7 @@ Shell * {
 
 Tree, Table {
   swt-header-color: #cacaca;
+  swt-lines-visible: false;
 }
 
 ExpandableComposite, Section {

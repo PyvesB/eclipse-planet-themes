@@ -71,4 +71,14 @@
             class="com.codeaffine.eclipse.ui.swt.theme.FontOnStartupLoader">
       </startup>
    </extension>
+   <extension
+         point="org.eclipse.e4.ui.css.core.propertyHandler">
+      <handler
+            adapter="org.eclipse.e4.ui.css.core.dom.ElementAdapter"
+            handler="io.github.pyvesb.eclipse_planet_themes.CSSPropertyLinesVisibleSWTHandler">
+         <property-name
+               name="swt-lines-visible">
+         </property-name>
+      </handler>
+   </extension>
 </plugin>
