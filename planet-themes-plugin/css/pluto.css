@@ -49,6 +49,10 @@ IEclipsePreferences#org-eclipse-ui-editors:io-github-pyvesb-eclipse_planet_theme
   preferences:
     'AbstractTextEditor.Color.SelectionBackground=99,63,139'
     'AbstractTextEditor.Color.Background=34,31,35'
+    'LSP4EReadOccurrenceIndicationColor=80,70,85'
+    'LSP4ETextOccurrenceIndicationColor=80,70,85'
+    'LSP4EWriteOccurrenceIndicationColor=100,90,110'
+    'TextOccurrenceIndicationColor=80,70,85'
     'additionIndicationColor=128,0,255'
     'currentIPColor=100,90,110'
     'currentLineColor=64,57,66'
