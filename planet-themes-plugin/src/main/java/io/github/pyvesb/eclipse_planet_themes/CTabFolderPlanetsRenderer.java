@@ -19,10 +19,6 @@ package io.github.pyvesb.eclipse_planet_themes;
 
 import java.lang.reflect.Field;
 import javax.inject.Inject;
-import org.eclipse.core.runtime.preferences.IEclipsePreferences;
-import org.eclipse.core.runtime.preferences.IEclipsePreferences.IPreferenceChangeListener;
-import org.eclipse.core.runtime.preferences.IEclipsePreferences.PreferenceChangeEvent;
-import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.e4.ui.internal.css.swt.ICTabRendering;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
@@ -36,25 +32,9 @@ import org.eclipse.swt.graphics.Pattern;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.graphics.Rectangle;
-import org.eclipse.swt.widgets.Display;
 
 @SuppressWarnings("restriction")
-public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICTabRendering, IPreferenceChangeListener {
-
-	/**
-	 * A named preference for setting CTabFolder's to be rendered with rounded
-	 * corners
-	 * <p>
-	 * The default value for this preference is: <code>false</code> (render
-	 * CTabFolder's with square corners)
-	 * </p>
-	 */
-	public static final String USE_ROUND_TABS = "USE_ROUND_TABS"; //$NON-NLS-1$
-
-	/**
-	 * Default value for "use round tabs" preference
-	 */
-	public static final boolean USE_ROUND_TABS_DEFAULT = false;
+public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICTabRendering {
 
 	// Constants for circle drawing
 	static enum CirclePart {
@@ -83,12 +63,6 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 		}
 	}
 
-	static final int SQUARE_CORNER = 0;
-
-	// drop shadow constants
-	static final int SIDE_DROP_WIDTH = 3;
-	static final int BOTTOM_DROP_WIDTH = 4;
-
 	// keylines
 	static final int OUTER_KEYLINE = 1;
 	static final int INNER_KEYLINE = 0;
@@ -103,19 +77,9 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 	static final int ITEM_LEFT_MARGIN = 4;
 	static final int ITEM_RIGHT_MARGIN = 4;
 
-	static final String E4_TOOLBAR_ACTIVE_IMAGE = "org.eclipse.e4.renderer.toolbar_background_active_image"; //$NON-NLS-1$
-	static final String E4_TOOLBAR_INACTIVE_IMAGE = "org.eclipse.e4.renderer.toolbar_background_inactive_image"; //$NON-NLS-1$
-
 	Rectangle rectShape;
-	int[] shape;
 
-	Image shadowImage, toolbarActiveImage, toolbarInactiveImage;
-
-	int cornerSize = 0;
-
-	boolean shadowEnabled = true;
-	Color shadowColor;
-	Color outerKeyline, innerKeyline;
+	Color outerKeyline;
 	boolean active;
 
 	Color[] selectedTabFillColors;
@@ -138,12 +102,6 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 	public CTabFolderPlanetsRenderer(CTabFolder parent) {
 		super(parent);
 		parentWrapper = new CTabFolderWrapper(parent);
-
-		IEclipsePreferences preferences = getSwtRendererPreferences();
-		preferences.addPreferenceChangeListener(this);
-		parent.addDisposeListener(e -> preferences.removePreferenceChangeListener(this));
-
-		cornerRadiusPreferenceChanged();
 	}
 
 	@Override
@@ -158,7 +116,6 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 		int borderBottom = onBottom ? TOP_KEYLINE + OUTER_KEYLINE : INNER_KEYLINE + OUTER_KEYLINE;
 		int marginWidth = parent.marginWidth;
 		int marginHeight = parent.marginHeight;
-		int sideDropWidth = shadowEnabled ? SIDE_DROP_WIDTH : 0;
 
 		// Trim is not affected by the corner size.
 		switch (part) {
@@ -172,8 +129,8 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 				height += paddingTop + paddingBottom + TAB_OUTLINE;
 				height += tabHeight + borderBottom + borderTop;
 			} else {
-				x = x - marginWidth - OUTER_KEYLINE - INNER_KEYLINE - sideDropWidth;
-				width = width + 2 * OUTER_KEYLINE + 2 * INNER_KEYLINE + 2 * marginWidth + 2 * sideDropWidth;
+				x = x - marginWidth - OUTER_KEYLINE - INNER_KEYLINE;
+				width = width + 2 * OUTER_KEYLINE + 2 * INNER_KEYLINE + 2 * marginWidth;
 				int tabHeight = parent.getTabHeight() + 1; // TODO: Figure out
 				// what
 				// to do about the
@@ -190,25 +147,19 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 					// - borderTop;
 					y = onBottom ? y - marginHeight - borderTop
 							: y - marginHeight - tabHeight - borderTop - TAB_OUTLINE;
-					height = height + borderBottom + borderTop + 2 * marginHeight + tabHeight + TAB_OUTLINE
-							+ (shadowEnabled ? BOTTOM_DROP_WIDTH : 0);
+					height = height + borderBottom + borderTop + 2 * marginHeight + tabHeight + TAB_OUTLINE;
 				}
 			}
 			break;
 		case PART_HEADER:
-			x = x - (INNER_KEYLINE + OUTER_KEYLINE) - sideDropWidth;
-			width = width + 2 * (INNER_KEYLINE + OUTER_KEYLINE + sideDropWidth);
+			x = x - (INNER_KEYLINE + OUTER_KEYLINE);
+			width = width + 2 * (INNER_KEYLINE + OUTER_KEYLINE);
 			break;
 		case PART_BORDER:
-			x = x - INNER_KEYLINE - OUTER_KEYLINE - sideDropWidth - ITEM_LEFT_MARGIN;
-			width = width + 2 * (INNER_KEYLINE + OUTER_KEYLINE + sideDropWidth) + ITEM_RIGHT_MARGIN;
+			x = x - INNER_KEYLINE - OUTER_KEYLINE - ITEM_LEFT_MARGIN;
+			width = width + 2 * (INNER_KEYLINE + OUTER_KEYLINE) + ITEM_RIGHT_MARGIN;
 			height += borderTop + borderBottom;
 			y -= borderTop;
-			if (onBottom) {
-				if (shadowEnabled) {
-					height += 3;
-				}
-			}
 
 			break;
 		default:
@@ -235,15 +186,6 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 	}
 
 	@Override
-	protected void dispose() {
-		if (shadowImage != null && !shadowImage.isDisposed()) {
-			shadowImage.dispose();
-			shadowImage = null;
-		}
-		super.dispose();
-	}
-
-	@Override
 	protected void draw(int part, int state, Rectangle bounds, GC gc) {
 
 		switch (part) {
@@ -255,9 +197,6 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 			return;
 		case PART_HEADER:
 			this.drawTabHeader(gc, bounds, state);
-			if (cornerSize != SQUARE_CORNER) {
-				this.drawCorners(gc, bounds);
-			}
 			return;
 		default:
 			if (0 <= part && part < parent.getItemCount()) {
@@ -272,7 +211,7 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 					state &= ~SWT.BACKGROUND;
 					super.draw(part, state, bounds, gc);
 				} else {
-					drawUnselectedTab(part, gc, bounds, state);
+					drawUnselectedTab(gc, bounds, state);
 					if ((state & SWT.HOT) == 0 && !active) {
 						gc.setAlpha(0x7f);
 						state &= ~SWT.BACKGROUND;
@@ -296,24 +235,23 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 		gc.setAlpha(255);
 		gc.setBackground(toFill);
 		gc.setForeground(toFill);
-		int radius = cornerSize / 2 + 1;
 		int leftX = bounds.x - 1;
 		int topY = bounds.y - 1;
 		int rightX = bounds.x + bounds.width;
 		int bottomY = bounds.y + bounds.height;
-		drawCutout(gc, leftX, topY, radius, CirclePart.LEFT_TOP);
-		drawCutout(gc, rightX, topY, radius, CirclePart.RIGHT_TOP);
-		drawCutout(gc, leftX, bottomY, radius, CirclePart.LEFT_BOTTOM);
-		drawCutout(gc, rightX, bottomY, radius, CirclePart.RIGHT_BOTTOM);
+		drawCutout(gc, leftX, topY, CirclePart.LEFT_TOP);
+		drawCutout(gc, rightX, topY, CirclePart.RIGHT_TOP);
+		drawCutout(gc, leftX, bottomY, CirclePart.LEFT_BOTTOM);
+		drawCutout(gc, rightX, bottomY, CirclePart.RIGHT_BOTTOM);
 		gc.setBackground(bg);
 		gc.setForeground(fg);
 	}
 
-	private void drawCutout(GC gc, int x, int y, int radius, CirclePart side) {
-		int centerX = x + (side.isLeft() ? radius : -radius);
-		int centerY = y + (side.isTop() ? radius : -radius);
+	private void drawCutout(GC gc, int x, int y, CirclePart side) {
+		int centerX = x;
+		int centerY = y;
 
-		int[] circle = drawCircle(centerX, centerY, radius, side);
+		int[] circle = drawCircle(centerX, centerY, side);
 		int[] result = new int[circle.length + 2];
 		result[0] = x;
 		result[1] = y;
@@ -330,8 +268,6 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 
 	void drawTabHeader(GC gc, Rectangle bounds, int state) {
 		boolean onBottom = parent.getTabPosition() == SWT.BOTTOM;
-		// TODO: this needs to be added to computeTrim for HEADER
-		int header = shadowEnabled ? onBottom ? 6 : 3 : 1;
 		Rectangle trim = computeTrim(PART_HEADER, state, 0, 0, 0, 0);
 		trim.width = bounds.width - trim.width;
 
@@ -340,78 +276,29 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 		trim.height = (parent.getTabHeight() + (onBottom ? 7 : 4)) - trim.height;
 
 		trim.x = -trim.x;
-		trim.y = onBottom ? bounds.height - parent.getTabHeight() - 1 - header : -trim.y;
+		trim.y = onBottom ? bounds.height - parent.getTabHeight() - 2 : -trim.y;
 		draw(PART_BACKGROUND, SWT.NONE, trim, gc);
 
 		if (outerKeyline == null)
 			outerKeyline = gc.getDevice().getSystemColor(SWT.COLOR_BLACK);
 		gc.setForeground(outerKeyline);
 
-		if (cornerSize == SQUARE_CORNER) {
-			gc.drawRectangle(rectShape);
-		} else {
-			gc.drawPolyline(shape);
-		}
+		gc.drawRectangle(rectShape);
 	}
 
 	void drawTabBody(GC gc, Rectangle bounds) {
 		int marginWidth = parent.marginWidth;
 		int marginHeight = parent.marginHeight;
-		int delta = INNER_KEYLINE + OUTER_KEYLINE + 2 * (shadowEnabled ? SIDE_DROP_WIDTH : 0) + 2 * marginWidth;
+		int delta = INNER_KEYLINE + OUTER_KEYLINE + 2 * marginWidth;
 		int width = bounds.width - delta;
 		int height = Math.max(
-				parent.getTabHeight() + INNER_KEYLINE + OUTER_KEYLINE + (shadowEnabled ? BOTTOM_DROP_WIDTH : 0),
-				bounds.height - INNER_KEYLINE - OUTER_KEYLINE - 2 * marginHeight
-						- (shadowEnabled ? BOTTOM_DROP_WIDTH : 0));
+				parent.getTabHeight() + INNER_KEYLINE + OUTER_KEYLINE,
+				bounds.height - INNER_KEYLINE - OUTER_KEYLINE - 2 * marginHeight);
 
 		// Remember for use in header drawing
-		if (cornerSize == SQUARE_CORNER) {
-			Rectangle rect = new Rectangle(bounds.x, bounds.y, width, height);
-			gc.fillRectangle(rect);
-			rectShape = rect;
-		} else {
-			int[] points = new int[1024];
-			int index = 0;
-			int radius = cornerSize / 2;
-
-			int circX = bounds.x + delta / 2 + radius;
-			int circY = bounds.y + radius;
-
-			// Body
-			index = 0;
-			int[] ltt = drawCircle(circX, circY, radius, CirclePart.LEFT_TOP);
-			System.arraycopy(ltt, 0, points, index, ltt.length);
-			index += ltt.length;
-
-			int[] lbb = drawCircle(circX, circY + height - (radius * 2), radius, CirclePart.LEFT_BOTTOM);
-			System.arraycopy(lbb, 0, points, index, lbb.length);
-			index += lbb.length;
-
-			int[] rb = drawCircle(circX + width - (radius * 2), circY + height - (radius * 2), radius,
-					CirclePart.RIGHT_BOTTOM);
-			System.arraycopy(rb, 0, points, index, rb.length);
-			index += rb.length;
-
-			int[] rt = drawCircle(circX + width - (radius * 2), circY, radius, CirclePart.RIGHT_TOP);
-			System.arraycopy(rt, 0, points, index, rt.length);
-			index += rt.length;
-			points[index++] = circX;
-			points[index++] = circY - radius;
-
-			int[] tempPoints = new int[index];
-			System.arraycopy(points, 0, tempPoints, 0, index);
-			gc.fillPolygon(tempPoints);
-
-			// Remember for use in header drawing
-			shape = tempPoints;
-		}
-
-		// Fill in parent background for non-rectangular shape
-		Display display = parent.getDisplay();
-
-		// Shadow
-		if (shadowEnabled)
-			drawShadow(display, bounds, gc);
+		Rectangle rect = new Rectangle(bounds.x, bounds.y, width, height);
+		gc.fillRectangle(rect);
+		rectShape = rect;
 	}
 
 	private int[] computeSquareTabOutline(int itemIndex, boolean onBottom, int startX, int endX, int bottomY,
@@ -425,7 +312,7 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 			points[index++] = bottomY;
 		} else {
 			if (active) {
-				points[index++] = shadowEnabled ? SIDE_DROP_WIDTH : 0 + INNER_KEYLINE + OUTER_KEYLINE;
+				points[index++] = INNER_KEYLINE + OUTER_KEYLINE;
 				points[index++] = bottomY;
 			}
 			points[index++] = startX;
@@ -442,65 +329,13 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 		points[index++] = bottomY;
 
 		if (active) {
-			points[index++] = parentSize.x - (shadowEnabled ? SIDE_DROP_WIDTH : 0 + INNER_KEYLINE + OUTER_KEYLINE);
+			points[index++] = parentSize.x - INNER_KEYLINE - OUTER_KEYLINE;
 			points[index++] = bottomY;
 		}
 
 		int[] tmpPoints = new int[index];
 		System.arraycopy(points, 0, tmpPoints, 0, index);
 
-		return tmpPoints;
-	}
-
-	private int[] computeRoundTabOutline(int itemIndex, boolean onBottom, int bottomY, Rectangle bounds,
-			Point parentSize) {
-		int header = shadowEnabled ? 2 : 0;
-		int width = bounds.width;
-		int[] points = new int[1024];
-		int index = 0;
-		int radius = cornerSize / 2;
-		int circX = bounds.x + radius;
-		int circY = onBottom ? bounds.y + bounds.height + 1 - header - radius : bounds.y - 1 + radius;
-		if (itemIndex == 0 && bounds.x == -computeTrim(CTabFolderRenderer.PART_HEADER, SWT.NONE, 0, 0, 0, 0).x) {
-			circX -= 1;
-			points[index++] = circX - radius;
-			points[index++] = bottomY;
-
-			points[index++] = circX - radius;
-			points[index++] = bottomY;
-		} else {
-			if (active) {
-				points[index++] = shadowEnabled ? SIDE_DROP_WIDTH : 0 + INNER_KEYLINE + OUTER_KEYLINE;
-				points[index++] = bottomY;
-			}
-			points[index++] = bounds.x;
-			points[index++] = bottomY;
-		}
-
-		int[] ltt = drawCircle(circX, circY, radius, CirclePart.left(onBottom));
-		if (!onBottom) {
-			mirrorCirclePoints(ltt);
-		}
-		System.arraycopy(ltt, 0, points, index, ltt.length);
-		index += ltt.length;
-		int[] rt = drawCircle(circX + width - (radius * 2), circY, radius, CirclePart.right(onBottom));
-		if (!onBottom) {
-			mirrorCirclePoints(rt);
-		}
-		System.arraycopy(rt, 0, points, index, rt.length);
-		index += rt.length;
-
-		points[index++] = bounds.width + circX - radius;
-		points[index++] = bottomY;
-
-		if (active) {
-			points[index++] = parentSize.x
-					- (shadowEnabled ? SIDE_DROP_WIDTH : 0 + INNER_KEYLINE + OUTER_KEYLINE);
-			points[index++] = bottomY;
-		}
-
-		int[] tmpPoints = new int[index];
-		System.arraycopy(points, 0, tmpPoints, 0, index);
 		return tmpPoints;
 	}
 
@@ -509,15 +344,13 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 			return;
 
 		boolean onBottom = parent.getTabPosition() == SWT.BOTTOM;
-		int header = shadowEnabled ? 2 : 0;
-		int bottomY = onBottom ? bounds.y - header : bounds.y + bounds.height;
+		int bottomY = onBottom ? bounds.y : bounds.y + bounds.height;
 		int selectionX1, selectionY1, selectionX2, selectionY2;
 		int startX, endX;
 		int[] tmpPoints = null;
 		Point parentSize = parent.getSize();
 
-		gc.setClipping(0, onBottom ? bounds.y - header : bounds.y,
-				parentSize.x - (shadowEnabled ? SIDE_DROP_WIDTH : 0 + INNER_KEYLINE + OUTER_KEYLINE),
+		gc.setClipping(0, onBottom ? bounds.y : bounds.y, parentSize.x - INNER_KEYLINE - OUTER_KEYLINE,
 				bounds.y + bounds.height);// bounds.height
 
 		Pattern backgroundPattern = null;
@@ -548,13 +381,9 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 		selectionX2 = endX - 1;
 		selectionY2 = bottomY;
 
-		if (cornerSize == SQUARE_CORNER) {
-			tmpPoints = computeSquareTabOutline(itemIndex, onBottom, startX, endX, bottomY, bounds, parentSize);
-			gc.fillRectangle(bounds);
-		} else {
-			tmpPoints = computeRoundTabOutline(itemIndex, onBottom, bottomY, bounds, parentSize);
-			gc.fillPolygon(tmpPoints);
-		}
+		tmpPoints = computeSquareTabOutline(itemIndex, onBottom, startX, endX, bottomY, bounds, parentSize);
+		gc.fillRectangle(bounds);
+		
 
 		gc.drawLine(selectionX1, selectionY1, selectionX2, selectionY2);
 
@@ -581,11 +410,7 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 			if (outerKeyline == null)
 				outerKeyline = gc.getDevice().getSystemColor(SWT.COLOR_RED);
 			gc.setForeground(outerKeyline);
-			if (cornerSize == SQUARE_CORNER) {
-				gc.drawRectangle(rectShape);
-			} else {
-				gc.drawPolyline(shape);
-			}
+			gc.drawRectangle(rectShape);
 		} else {
 			if (!onBottom) {
 				gc.drawLine(startX, 0, endX, 0);
@@ -599,8 +424,8 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 				highlightOnTop = !highlightOnTop;
 			}
 			int verticalOffset = highlightOnTop ? 0 : bounds.height - 2;
-			int horizontalOffset = itemIndex == 0 || cornerSize == SQUARE_CORNER ? 0 : 1;
-			int widthAdjustment = cornerSize == SQUARE_CORNER ? 0 : 1;
+			int horizontalOffset = itemIndex == 0 ? 0 : 1;
+			int widthAdjustment = 0;
 			gc.fillRectangle(bounds.x + horizontalOffset, bounds.y + verticalOffset, bounds.width - widthAdjustment, 3);
 		}
 
@@ -612,131 +437,23 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 		}
 	}
 
-	void drawUnselectedTab(int itemIndex, GC gc, Rectangle bounds, int state) {
+	void drawUnselectedTab(GC gc, Rectangle bounds, int state) {
 		if ((state & SWT.HOT) != 0) {
-			int header = shadowEnabled ? 2 : 0;
-			int width = bounds.width;
-			boolean onBottom = parent.getTabPosition() == SWT.BOTTOM;
-			int bottomY = onBottom ? bounds.y - header : bounds.y + bounds.height;
-
-			// Remember for use in header drawing
-			if (cornerSize == SQUARE_CORNER) {
-				Color color = hotUnselectedTabsColorBackground;
-				if (color == null) {
-					// Fallback: if color was not set, use white for highlighting
-					// hot tab.
-					color = gc.getDevice().getSystemColor(SWT.COLOR_WHITE);
-				}
-				gc.setBackground(color);
-
-				Rectangle rect = new Rectangle(bounds.x, bounds.y, bounds.width, bounds.height);
-				gc.fillRectangle(rect);
-			} else {
-				int[] points = new int[1024];
-				int[] inactive = new int[8];
-				int index = 0, inactive_index = 0;
-				int radius = cornerSize / 2;
-				int circX = bounds.x + radius;
-				int circY = onBottom ? bounds.y + bounds.height + 1 - header - radius : bounds.y - 1 + radius;
-
-				int leftIndex = circX;
-				if (itemIndex == 0) {
-					if (parent.getSelectionIndex() != 0)
-						leftIndex -= 1;
-					points[index++] = leftIndex - radius;
-					points[index++] = bottomY;
-				} else {
-					points[index++] = bounds.x;
-					points[index++] = bottomY;
-				}
-
-				if (!active) {
-					System.arraycopy(points, 0, inactive, 0, index);
-					inactive_index += 2;
-				}
-
-				int rightIndex = circX - 1;
-
-				int[] ltt = drawCircle(leftIndex, circY, radius, CirclePart.left(onBottom));
-				if (!onBottom) {
-					mirrorCirclePoints(ltt);
-				}
-				System.arraycopy(ltt, 0, points, index, ltt.length);
-				index += ltt.length;
-
-				if (!active) {
-					System.arraycopy(ltt, 0, inactive, inactive_index, 2);
-					inactive_index += 2;
-				}
-
-				int[] rt = drawCircle(rightIndex + width - (radius * 2), circY, radius, CirclePart.right(onBottom));
-				if (!onBottom) {
-					mirrorCirclePoints(rt);
-				}
-				System.arraycopy(rt, 0, points, index, rt.length);
-				index += rt.length;
-
-				if (!active) {
-					System.arraycopy(rt, rt.length - 4, inactive, inactive_index, 2);
-					inactive[inactive_index] -= 1;
-					inactive_index += 2;
-				}
-
-				points[index++] = bounds.width + rightIndex - radius;
-				points[index++] = bottomY;
-
-				if (!active) {
-					System.arraycopy(points, index - 2, inactive, inactive_index, 2);
-					inactive[inactive_index] -= 1;
-					inactive_index += 2;
-				}
-				gc.setClipping(points[0], onBottom ? bounds.y - header : bounds.y,
-						parent.getSize().x - (shadowEnabled ? SIDE_DROP_WIDTH : 0 + INNER_KEYLINE + OUTER_KEYLINE),
-						bounds.y + bounds.height);
-
-				Color color = hotUnselectedTabsColorBackground;
-				if (color == null) {
-					// Fallback: if color was not set, use white for highlighting
-					// hot tab.
-					color = gc.getDevice().getSystemColor(SWT.COLOR_WHITE);
-				}
-				gc.setBackground(color);
-
-				int[] tmpPoints = new int[index];
-				System.arraycopy(points, 0, tmpPoints, 0, index);
-				gc.fillPolygon(tmpPoints);
-
-				if (tabOutlineColor == null)
-					tabOutlineColor = gc.getDevice().getSystemColor(SWT.COLOR_BLACK);
-				gc.setForeground(tabOutlineColor);
-
-				if (active) {
-					gc.drawPolyline(tmpPoints);
-				} else {
-					gc.drawLine(inactive[0], inactive[1], inactive[2], inactive[3]);
-					gc.drawLine(inactive[4], inactive[5], inactive[6], inactive[7]);
-				}
-				gc.setClipping((Rectangle) null);
+			Color color = hotUnselectedTabsColorBackground;
+			if (color == null) {
+				// Fallback: if color was not set, use white for highlighting
+				// hot tab.
+				color = gc.getDevice().getSystemColor(SWT.COLOR_WHITE);
 			}
+			gc.setBackground(color);
 
-			// gc.setForeground(outerKeyline);
-			// gc.drawPolyline(shape);
+			Rectangle rect = new Rectangle(bounds.x, bounds.y, bounds.width, bounds.height);
+			gc.fillRectangle(rect);
 		}
 	}
 
-	private static void mirrorCirclePoints(int[] circle) {
-		for (int i = 0; i < circle.length / 2; i += 2) {
-			int tmp = circle[i];
-			circle[i] = circle[circle.length - i - 2];
-			circle[circle.length - i - 2] = tmp;
-			tmp = circle[i + 1];
-			circle[i + 1] = circle[circle.length - i - 1];
-			circle[circle.length - i - 1] = tmp;
-		}
-	}
-
-	static int[] drawCircle(int xC, int yC, int r, CirclePart circlePart) {
-		int x = 0, y = r, u = 1, v = 2 * r - 1, e = 0;
+	static int[] drawCircle(int xC, int yC, CirclePart circlePart) {
+		int x = 0, y = 0, u = 1, v = - 1, e = 0;
 		int[] points = new int[1024];
 		int[] pointsMirror = new int[1024];
 		int loop = 0;
@@ -808,76 +525,6 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 	static int blend(int v1, int v2, int ratio) {
 		int b = (ratio * v1 + (100 - ratio) * v2) / 100;
 		return Math.min(255, b);
-	}
-
-	void drawShadow(final Display display, Rectangle bounds, GC gc) {
-		if (shadowImage == null) {
-			createShadow(display);
-		}
-		int x = bounds.x;
-		int y = bounds.y;
-		int SIZE = shadowImage.getBounds().width / 3;
-
-		int height = Math.max(bounds.height, SIZE * 2);
-		int width = Math.max(bounds.width, SIZE * 2);
-		// top left
-		gc.drawImage(shadowImage, 0, 0, SIZE, SIZE, 2, 10, SIZE, 20);
-		int fillHeight = height - SIZE * 2;
-		int fillWidth = width + 5 - SIZE * 2;
-
-		int xFill = 0;
-		for (int i = SIZE; i < fillHeight; i += SIZE) {
-			xFill = i;
-			gc.drawImage(shadowImage, 0, SIZE, SIZE, SIZE, 2, i, SIZE, SIZE);
-		}
-
-		// Pad the rest of the shadow
-		gc.drawImage(shadowImage, 0, SIZE, SIZE, fillHeight - xFill, 2, xFill + SIZE, SIZE, fillHeight - xFill);
-
-		// bl
-		gc.drawImage(shadowImage, 0, 40, 20, 20, 2, y + height - SIZE, 20, 20);
-
-		int yFill = 0;
-		for (int i = SIZE; i <= fillWidth; i += SIZE) {
-			yFill = i;
-			gc.drawImage(shadowImage, SIZE, SIZE * 2, SIZE, SIZE, i, y + height - SIZE, SIZE, SIZE);
-		}
-		// Pad the rest of the shadow
-		gc.drawImage(shadowImage, SIZE, SIZE * 2, fillWidth - yFill, SIZE, yFill + SIZE, y + height - SIZE,
-				fillWidth - yFill, SIZE);
-
-		// br
-		gc.drawImage(shadowImage, SIZE * 2, SIZE * 2, SIZE, SIZE, x + width - SIZE - 1, y + height - SIZE, SIZE, SIZE);
-
-		// tr
-		gc.drawImage(shadowImage, (SIZE * 2), 0, SIZE, SIZE, x + width - SIZE - 1, 10, SIZE, SIZE);
-
-		xFill = 0;
-		for (int i = SIZE; i < fillHeight; i += SIZE) {
-			xFill = i;
-			gc.drawImage(shadowImage, SIZE * 2, SIZE, SIZE, SIZE, x + width - SIZE - 1, i, SIZE, SIZE);
-		}
-
-		// Pad the rest of the shadow
-		gc.drawImage(shadowImage, SIZE * 2, SIZE, SIZE, fillHeight - xFill, x + width - SIZE - 1, xFill + SIZE, SIZE,
-				fillHeight - xFill);
-	}
-
-	void createShadow(final Display display) {
-		if (shadowImage != null) {
-			shadowImage.dispose();
-			shadowImage = null;
-		}
-		ImageData data = new ImageData(60, 60, 32, new PaletteData(0xFF0000, 0xFF00, 0xFF));
-		Image tmpImage = shadowImage = new Image(display, data);
-		GC gc = new GC(tmpImage);
-		if (shadowColor == null)
-			shadowColor = gc.getDevice().getSystemColor(SWT.COLOR_GRAY);
-		gc.setBackground(shadowColor);
-		drawTabBody(gc, new Rectangle(0, 0, 60, 60));
-		ImageData blured = blur(tmpImage, 5, 25);
-		shadowImage = new Image(display, blured);
-		tmpImage.dispose();
 	}
 
 	public ImageData blur(Image src, int radius, int sigma) {
@@ -1006,23 +653,13 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 	}
 
 	@Override
-	public void setCornerRadius(int radius) {
-		cornerSize = (radius < 6) ? 0 : radius;
-		parent.redraw();
-	}
+	public void setCornerRadius(int radius) {}
 
 	@Override
-	public void setShadowVisible(boolean visible) {
-		this.shadowEnabled = visible;
-		parent.redraw();
-	}
+	public void setShadowVisible(boolean visible) {}
 
 	@Override
-	public void setShadowColor(Color color) {
-		this.shadowColor = color;
-		createShadow(parent.getDisplay());
-		parent.redraw();
-	}
+	public void setShadowColor(Color color) {}
 
 	@Override
 	public void setOuterKeyline(Color color) {
@@ -1071,10 +708,7 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 	}
 
 	@Override
-	public void setInnerKeyline(Color color) {
-		this.innerKeyline = color;
-		parent.redraw();
-	}
+	public void setInnerKeyline(Color color) {}
 
 	public void setActive(boolean active) {
 		this.active = active;
@@ -1331,27 +965,7 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 	}
 	
 	@Override
-	public void setDrawCustomTabContentBackground(boolean drawCustomTabContentBackground) {
-		// TODO Auto-generated method stub
-	}
-
-	private void cornerRadiusPreferenceChanged() {
-		IEclipsePreferences preferences = getSwtRendererPreferences();
-		boolean useRound = preferences.getBoolean(USE_ROUND_TABS, USE_ROUND_TABS_DEFAULT);
-		setCornerRadius(useRound ? 16 : 0);
-	}
-
-	@Override
-	public void preferenceChange(PreferenceChangeEvent event) {
-		if (!USE_ROUND_TABS.equals(event.getKey())) {
-			return;
-		}
-		cornerRadiusPreferenceChanged();
-	}
-
-	private IEclipsePreferences getSwtRendererPreferences() {
-		return InstanceScope.INSTANCE.getNode("org.eclipse.e4.ui.workbench.renderers.swt"); //$NON-NLS-1$
-	}
+	public void setDrawCustomTabContentBackground(boolean drawCustomTabContentBackground) {}
 
 }
 
