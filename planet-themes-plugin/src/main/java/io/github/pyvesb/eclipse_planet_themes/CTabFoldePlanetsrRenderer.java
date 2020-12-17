@@ -607,9 +607,6 @@ public class CTabFoldePlanetsrRenderer extends CTabFolderRenderer implements ICT
 		if (backgroundPattern != null) {
 			backgroundPattern.dispose();
 		}
-		if (gradientLineTop != null) {
-			gradientLineTop.dispose();
-		}
 		if (foregroundPattern != null) {
 			foregroundPattern.dispose();
 		}
