@@ -1334,6 +1334,11 @@ public class CTabFoldePlanetsrRenderer extends CTabFolderRenderer implements ICT
 		this.drawTabHighlightOnTop = drawTabHiglightOnTop;
 		parent.redraw();
 	}
+	
+	@Override
+	public void setDrawCustomTabContentBackground(boolean drawCustomTabContentBackground) {
+		// TODO Auto-generated method stub
+	}
 
 	private void cornerRadiusPreferenceChanged() {
 		IEclipsePreferences preferences = getSwtRendererPreferences();
