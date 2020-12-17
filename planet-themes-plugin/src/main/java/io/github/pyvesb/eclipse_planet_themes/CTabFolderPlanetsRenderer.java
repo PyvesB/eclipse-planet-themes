@@ -39,7 +39,7 @@ import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.Display;
 
 @SuppressWarnings("restriction")
-public class CTabFoldePlanetsrRenderer extends CTabFolderRenderer implements ICTabRendering, IPreferenceChangeListener {
+public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICTabRendering, IPreferenceChangeListener {
 
 	/**
 	 * A named preference for setting CTabFolder's to be rendered with rounded
@@ -135,7 +135,7 @@ public class CTabFoldePlanetsrRenderer extends CTabFolderRenderer implements ICT
 	private boolean drawTabHighlightOnTop = true;
 
 	@Inject
-	public CTabFoldePlanetsrRenderer(CTabFolder parent) {
+	public CTabFolderPlanetsRenderer(CTabFolder parent) {
 		super(parent);
 		parentWrapper = new CTabFolderWrapper(parent);
 
