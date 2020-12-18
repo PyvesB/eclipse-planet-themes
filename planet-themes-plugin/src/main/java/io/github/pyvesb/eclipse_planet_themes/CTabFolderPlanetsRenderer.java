@@ -276,8 +276,6 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 		trim.y = onBottom ? bounds.height - parent.getTabHeight() - 2 : -trim.y;
 		draw(PART_BACKGROUND, SWT.NONE, trim, gc);
 
-		if (outerKeyline == null)
-			outerKeyline = gc.getDevice().getSystemColor(SWT.COLOR_BLACK);
 		gc.setForeground(outerKeyline);
 
 		gc.drawRectangle(rectShape);
@@ -351,9 +349,6 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 				bounds.y + bounds.height);// bounds.height
 
 		Pattern backgroundPattern = null;
-		if (selectedTabFillColors == null) {
-			setSelectedTabFill(gc.getDevice().getSystemColor(SWT.COLOR_WHITE));
-		}
 		if (selectedTabFillColors.length == 1) {
 			gc.setBackground(selectedTabFillColors[0]);
 			gc.setForeground(selectedTabFillColors[0]);
@@ -384,8 +379,6 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 
 		gc.drawLine(selectionX1, selectionY1, selectionX2, selectionY2);
 
-		if (tabOutlineColor == null)
-			tabOutlineColor = gc.getDevice().getSystemColor(SWT.COLOR_BLACK);
 		gc.setForeground(tabOutlineColor);
 
 		Color gradientLineTop = null;
@@ -404,8 +397,6 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 		gc.setClipping((Rectangle) null);
 
 		if (active) {
-			if (outerKeyline == null)
-				outerKeyline = gc.getDevice().getSystemColor(SWT.COLOR_RED);
 			gc.setForeground(outerKeyline);
 			gc.drawRectangle(rectShape);
 		} else {
@@ -436,13 +427,7 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 
 	void drawUnselectedTab(GC gc, Rectangle bounds, int state) {
 		if ((state & SWT.HOT) != 0) {
-			Color color = hotUnselectedTabsColorBackground;
-			if (color == null) {
-				// Fallback: if color was not set, use white for highlighting
-				// hot tab.
-				color = gc.getDevice().getSystemColor(SWT.COLOR_WHITE);
-			}
-			gc.setBackground(color);
+			gc.setBackground(hotUnselectedTabsColorBackground);
 
 			Rectangle rect = new Rectangle(bounds.x, bounds.y, bounds.width, bounds.height);
 			gc.fillRectangle(rect);
@@ -726,10 +711,6 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 			boolean selected = (state & SWT.SELECTED) != 0;
 			colors = selected ? parentWrapper.getSelectionGradientColors() : parentWrapper.getGradientColors();
 			percents = selected ? parentWrapper.getSelectionGradientPercents() : parentWrapper.getGradientPercents();
-		}
-		if (colors == null) {
-			colors = new Color[] { gc.getDevice().getSystemColor(SWT.COLOR_WHITE) };
-			percents = new int[] { 100 };
 		}
 
 		boolean onBottom = parent.getTabPosition() == SWT.BOTTOM;
