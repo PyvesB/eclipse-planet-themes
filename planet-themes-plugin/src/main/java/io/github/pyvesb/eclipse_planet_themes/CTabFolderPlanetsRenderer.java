@@ -17,7 +17,6 @@
  *******************************************************************************/
 package io.github.pyvesb.eclipse_planet_themes;
 
-import java.lang.reflect.Field;
 import javax.inject.Inject;
 import org.eclipse.e4.ui.internal.css.swt.ICTabRendering;
 import org.eclipse.swt.SWT;
@@ -79,26 +78,16 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 
 	Rectangle rectShape;
 
-	Color outerKeyline;
+	Color outerKeyline, selectedTabFillColor, tabOutlineColor, hotUnselectedTabsColorBackground, selectedTabHighlightColor;
 	boolean active;
-
-	Color[] selectedTabFillColors;
-	int[] selectedTabFillPercents;
-
-	Color tabOutlineColor;
 
 	int paddingLeft = 0, paddingRight = 0, paddingTop = 0, paddingBottom = 0;
 
-	private CTabFolderWrapper parentWrapper;
-
-	private Color hotUnselectedTabsColorBackground;
-	private Color selectedTabHighlightColor;
 	private boolean drawTabHighlightOnTop = true;
 
 	@Inject
 	public CTabFolderPlanetsRenderer(CTabFolder parent) {
 		super(parent);
-		parentWrapper = new CTabFolderWrapper(parent);
 	}
 
 	@Override
@@ -348,23 +337,8 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 		gc.setClipping(0, onBottom ? bounds.y : bounds.y, parentSize.x - INNER_KEYLINE - OUTER_KEYLINE,
 				bounds.y + bounds.height);// bounds.height
 
-		Pattern backgroundPattern = null;
-		if (selectedTabFillColors.length == 1) {
-			gc.setBackground(selectedTabFillColors[0]);
-			gc.setForeground(selectedTabFillColors[0]);
-		} else if (selectedTabFillColors.length == 2) {
-			// for now we support the 2-colors gradient for selected tab
-			if (!onBottom) {
-				backgroundPattern = new Pattern(gc.getDevice(), 0, 0, 0, bounds.height + 1, selectedTabFillColors[0],
-						selectedTabFillColors[1]);
-			} else {
-				backgroundPattern = new Pattern(gc.getDevice(), 0, 0, 0, bounds.height + 1, selectedTabFillColors[1],
-						selectedTabFillColors[0]);
-			}
-
-			gc.setBackgroundPattern(backgroundPattern);
-			gc.setForeground(selectedTabFillColors[1]);
-		}
+		gc.setBackground(selectedTabFillColor);
+		gc.setForeground(selectedTabFillColor);
 
 		startX = bounds.x - 1;
 		endX = bounds.x + bounds.width;
@@ -417,9 +391,6 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 			gc.fillRectangle(bounds.x + horizontalOffset, bounds.y + verticalOffset, bounds.width - widthAdjustment, 3);
 		}
 
-		if (backgroundPattern != null) {
-			backgroundPattern.dispose();
-		}
 		if (foregroundPattern != null) {
 			foregroundPattern.dispose();
 		}
@@ -666,8 +637,7 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 
 	@Override
 	public void setSelectedTabFill(Color[] colors, int[] percents) {
-		selectedTabFillColors = colors;
-		selectedTabFillPercents = percents;
+		selectedTabFillColor = colors[0];
 		parent.redraw();
 	}
 
@@ -691,28 +661,12 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 	}
 
 	private void drawCustomBackground(GC gc, Rectangle bounds, int state) {
-		boolean selected = (state & SWT.SELECTED) != 0;
-		Color defaultBackground = selected ? parent.getSelectionBackground() : parent.getBackground();
-		boolean vertical = selected ? parentWrapper.isSelectionGradientVertical() : parentWrapper.isGradientVertical();
 		Rectangle partHeaderBounds = computeTrim(PART_HEADER, state, bounds.x, bounds.y, bounds.width, bounds.height);
 
-		drawTabBackground(gc, partHeaderBounds, state, vertical, defaultBackground);
+		drawTabBackground(gc, partHeaderBounds);
 	}
 
-	private void drawTabBackground(GC gc, Rectangle partHeaderBounds, int state, boolean vertical,
-			Color defaultBackground) {
-		Color[] colors = selectedTabFillColors;
-		int[] percents = selectedTabFillPercents;
-
-		if (colors != null && colors.length == 2) {
-			colors = new Color[] { colors[1], colors[1] };
-		}
-		if (colors == null) {
-			boolean selected = (state & SWT.SELECTED) != 0;
-			colors = selected ? parentWrapper.getSelectionGradientColors() : parentWrapper.getGradientColors();
-			percents = selected ? parentWrapper.getSelectionGradientPercents() : parentWrapper.getGradientPercents();
-		}
-
+	private void drawTabBackground(GC gc, Rectangle partHeaderBounds) {
 		boolean onBottom = parent.getTabPosition() == SWT.BOTTOM;
 		int borderTop = onBottom ? INNER_KEYLINE + OUTER_KEYLINE : TOP_KEYLINE + OUTER_KEYLINE;
 		Rectangle parentBounds = parent.getBounds();
@@ -720,195 +674,8 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 		int height = (onBottom) ? parentBounds.height - partHeaderBounds.height + 2 * paddingTop + 2 * borderTop
 				: parentBounds.height - partHeaderBounds.height;
 
-		drawBackground(gc, partHeaderBounds.x, y, partHeaderBounds.width, height, defaultBackground, colors, percents,
-				vertical);
-	}
-
-	/*
-	 * Copied the relevant parts from the package private
-	 * org.eclipse.swt.custom.CTabFolderRenderer.drawBackground(GC, int[], int, int,
-	 * int, int, Color, Image, Color[], int[], boolean) method.
-	 */
-	private void drawBackground(GC gc, int x, int y, int width, int height, Color defaultBackground, Color[] colors,
-			int[] percents, boolean vertical) {
-		if (colors != null) {
-			// draw gradient
-			if (colors.length == 1) {
-				Color background = colors[0] != null ? colors[0] : defaultBackground;
-				gc.setBackground(background);
-				gc.fillRectangle(x, y, width, height);
-			} else {
-				if (vertical) {
-					if ((parent.getStyle() & SWT.BOTTOM) != 0) {
-						int pos = 0;
-						if (percents[percents.length - 1] < 100) {
-							pos = (100 - percents[percents.length - 1]) * height / 100;
-							gc.setBackground(defaultBackground);
-							gc.fillRectangle(x, y, width, pos);
-						}
-						Color lastColor = colors[colors.length - 1];
-						if (lastColor == null)
-							lastColor = defaultBackground;
-						for (int i = percents.length - 1; i >= 0; i--) {
-							gc.setForeground(lastColor);
-							lastColor = colors[i];
-							if (lastColor == null)
-								lastColor = defaultBackground;
-							gc.setBackground(lastColor);
-							int percentage = i > 0 ? percents[i] - percents[i - 1] : percents[i];
-							int gradientHeight = percentage * height / 100;
-							gc.fillGradientRectangle(x, y + pos, width, gradientHeight, true);
-							pos += gradientHeight;
-						}
-					} else {
-						Color lastColor = colors[0];
-						if (lastColor == null)
-							lastColor = defaultBackground;
-						int pos = 0;
-						for (int i = 0; i < percents.length; i++) {
-							gc.setForeground(lastColor);
-							lastColor = colors[i + 1];
-							if (lastColor == null)
-								lastColor = defaultBackground;
-							gc.setBackground(lastColor);
-							int percentage = i > 0 ? percents[i] - percents[i - 1] : percents[i];
-							int gradientHeight = percentage * height / 100;
-							gc.fillGradientRectangle(x, y + pos, width, gradientHeight, true);
-							pos += gradientHeight;
-						}
-						if (pos < height) {
-							gc.setBackground(defaultBackground);
-							gc.fillRectangle(x, pos, width, height - pos + 1);
-						}
-					}
-				} else { // horizontal gradient
-					y = 0;
-					height = parent.getSize().y;
-					Color lastColor = colors[0];
-					if (lastColor == null)
-						lastColor = defaultBackground;
-					int pos = 0;
-					for (int i = 0; i < percents.length; ++i) {
-						gc.setForeground(lastColor);
-						lastColor = colors[i + 1];
-						if (lastColor == null)
-							lastColor = defaultBackground;
-						gc.setBackground(lastColor);
-						int gradientWidth = (percents[i] * width / 100) - pos;
-						gc.fillGradientRectangle(x + pos, y, gradientWidth, height, false);
-						pos += gradientWidth;
-					}
-					if (pos < width) {
-						gc.setBackground(defaultBackground);
-						gc.fillRectangle(x + pos, y, width - pos, height);
-					}
-				}
-			}
-		} else {
-			// draw a solid background using default background in shape
-			if ((parent.getStyle() & SWT.NO_BACKGROUND) != 0 || !defaultBackground.equals(parent.getBackground())) {
-				gc.setBackground(defaultBackground);
-				gc.fillRectangle(x, y, width, height);
-			}
-		}
-	}
-
-	private static class CTabFolderWrapper extends ReflectionSupport<CTabFolder> {
-		private Field selectionGradientVerticalField;
-
-		private Field gradientVerticalField;
-
-		private Field selectionGradientColorsField;
-
-		private Field selectionGradientPercentsField;
-
-		private Field gradientColorsField;
-
-		private Field gradientPercentsField;
-
-		public CTabFolderWrapper(CTabFolder instance) {
-			super(instance);
-		}
-
-		public boolean isSelectionGradientVertical() {
-			if (selectionGradientVerticalField == null) {
-				selectionGradientVerticalField = getField("selectionGradientVertical"); //$NON-NLS-1$
-			}
-			Boolean result = (Boolean) getFieldValue(selectionGradientVerticalField);
-			return result != null ? result : true;
-		}
-
-		public boolean isGradientVertical() {
-			if (gradientVerticalField == null) {
-				gradientVerticalField = getField("gradientVertical"); //$NON-NLS-1$
-			}
-			Boolean result = (Boolean) getFieldValue(gradientVerticalField);
-			return result != null ? result : true;
-		}
-
-		public Color[] getSelectionGradientColors() {
-			if (selectionGradientColorsField == null) {
-				selectionGradientColorsField = getField("selectionGradientColorsField"); //$NON-NLS-1$
-			}
-			return (Color[]) getFieldValue(selectionGradientColorsField);
-		}
-
-		public int[] getSelectionGradientPercents() {
-			if (selectionGradientPercentsField == null) {
-				selectionGradientPercentsField = getField("selectionGradientPercents"); //$NON-NLS-1$
-			}
-			return (int[]) getFieldValue(selectionGradientPercentsField);
-		}
-
-		public Color[] getGradientColors() {
-			if (gradientColorsField == null) {
-				gradientColorsField = getField("gradientColors"); //$NON-NLS-1$
-			}
-			return (Color[]) getFieldValue(gradientColorsField);
-		}
-
-		public int[] getGradientPercents() {
-			if (gradientPercentsField == null) {
-				gradientPercentsField = getField("gradientPercents"); //$NON-NLS-1$
-			}
-			return (int[]) getFieldValue(gradientPercentsField);
-		}
-	}
-
-	private static class ReflectionSupport<T> {
-		private T instance;
-
-		public ReflectionSupport(T instance) {
-			this.instance = instance;
-		}
-
-		protected Object getFieldValue(Field field) {
-			Object value = null;
-			if (field != null) {
-				boolean accessible = field.isAccessible();
-				try {
-					field.setAccessible(true);
-					value = field.get(instance);
-				} catch (Exception exc) {
-					// do nothing
-				} finally {
-					field.setAccessible(accessible);
-				}
-			}
-			return value;
-		}
-
-		protected Field getField(String name) {
-			Class<?> cls = instance.getClass();
-			while (!cls.equals(Object.class)) {
-				try {
-					return cls.getDeclaredField(name);
-				} catch (Exception exc) {
-					cls = cls.getSuperclass();
-				}
-			}
-			return null;
-		}
+		gc.setBackground(selectedTabFillColor);
+		gc.fillRectangle(partHeaderBounds.x, y, partHeaderBounds.width, height);
 	}
 
 	@Override
