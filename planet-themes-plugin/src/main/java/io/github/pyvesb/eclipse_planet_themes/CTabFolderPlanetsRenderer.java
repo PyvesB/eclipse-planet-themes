@@ -397,7 +397,7 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 	}
 
 	void drawUnselectedTab(GC gc, Rectangle bounds, int state) {
-		if ((state & SWT.HOT) != 0) {
+		if ((state & SWT.HOT) != 0 && hotUnselectedTabsColorBackground != null) {
 			gc.setBackground(hotUnselectedTabsColorBackground);
 
 			Rectangle rect = new Rectangle(bounds.x, bounds.y, bounds.width, bounds.height);
