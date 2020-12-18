@@ -85,9 +85,6 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 	Color[] selectedTabFillColors;
 	int[] selectedTabFillPercents;
 
-	Color[] unselectedTabsColors;
-	int[] unselectedTabsPercents;
-
 	Color tabOutlineColor;
 
 	int paddingLeft = 0, paddingRight = 0, paddingTop = 0, paddingBottom = 0;
@@ -690,16 +687,10 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 	}
 
 	@Override
-	public void setUnselectedTabsColor(Color color) {
-		setUnselectedTabsColor(new Color[] { color }, new int[] { 100 });
-	}
+	public void setUnselectedTabsColor(Color color) {}
 
 	@Override
-	public void setUnselectedTabsColor(Color[] colors, int[] percents) {
-		unselectedTabsColors = colors;
-		unselectedTabsPercents = percents;
-		parent.redraw();
-	}
+	public void setUnselectedTabsColor(Color[] colors, int[] percents) {}
 
 	@Override
 	public void setTabOutline(Color color) {
@@ -720,26 +711,7 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 		boolean vertical = selected ? parentWrapper.isSelectionGradientVertical() : parentWrapper.isGradientVertical();
 		Rectangle partHeaderBounds = computeTrim(PART_HEADER, state, bounds.x, bounds.y, bounds.width, bounds.height);
 
-		drawUnselectedTabBackground(gc, partHeaderBounds, state, vertical, defaultBackground);
 		drawTabBackground(gc, partHeaderBounds, state, vertical, defaultBackground);
-	}
-
-	private void drawUnselectedTabBackground(GC gc, Rectangle partHeaderBounds, int state, boolean vertical,
-			Color defaultBackground) {
-		if (unselectedTabsColors == null) {
-			boolean selected = (state & SWT.SELECTED) != 0;
-			unselectedTabsColors = selected ? parentWrapper.getSelectionGradientColors()
-					: parentWrapper.getGradientColors();
-			unselectedTabsPercents = selected ? parentWrapper.getSelectionGradientPercents()
-					: parentWrapper.getGradientPercents();
-		}
-		if (unselectedTabsColors == null) {
-			unselectedTabsColors = new Color[] { gc.getDevice().getSystemColor(SWT.COLOR_WHITE) };
-			unselectedTabsPercents = new int[] { 100 };
-		}
-
-		drawBackground(gc, partHeaderBounds.x, partHeaderBounds.y - 1, partHeaderBounds.width, partHeaderBounds.height,
-				defaultBackground, unselectedTabsColors, unselectedTabsPercents, vertical);
 	}
 
 	private void drawTabBackground(GC gc, Rectangle partHeaderBounds, int state, boolean vertical,
