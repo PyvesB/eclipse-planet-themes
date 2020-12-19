@@ -18,48 +18,18 @@
 package io.github.pyvesb.eclipse_planet_themes;
 
 import javax.inject.Inject;
+
 import org.eclipse.e4.ui.internal.css.swt.ICTabRendering;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.custom.CTabFolderRenderer;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.GC;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.graphics.ImageData;
-import org.eclipse.swt.graphics.PaletteData;
 import org.eclipse.swt.graphics.Point;
-import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.graphics.Rectangle;
 
 @SuppressWarnings("restriction")
 public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICTabRendering {
-
-	// Constants for circle drawing
-	static enum CirclePart {
-		LEFT_TOP, LEFT_BOTTOM, RIGHT_TOP, RIGHT_BOTTOM;
-
-		static CirclePart left(boolean onBottom) {
-			if (onBottom) {
-				return LEFT_BOTTOM;
-			}
-			return LEFT_TOP;
-		}
-
-		static CirclePart right(boolean onBottom) {
-			if (onBottom) {
-				return RIGHT_BOTTOM;
-			}
-			return RIGHT_TOP;
-		}
-
-		public boolean isLeft() {
-			return this == LEFT_TOP || this == LEFT_BOTTOM;
-		}
-
-		public boolean isTop() {
-			return this == LEFT_TOP || this == RIGHT_TOP;
-		}
-	}
 
 	// keylines
 	static final int OUTER_KEYLINE = 1;
@@ -110,20 +80,11 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 			} else {
 				x = x - marginWidth - OUTER_KEYLINE - INNER_KEYLINE;
 				width = width + 2 * OUTER_KEYLINE + 2 * INNER_KEYLINE + 2 * marginWidth;
-				int tabHeight = parent.getTabHeight() + 1; // TODO: Figure out
-				// what
-				// to do about the
-				// +1
-				// TODO: Fix
+				int tabHeight = parent.getTabHeight() + 1;
 				if (parent.getMinimized()) {
 					y = onBottom ? y - borderTop - 5 : y - tabHeight - borderTop - 5;
 					height = borderTop + borderBottom + tabHeight;
 				} else {
-					// y = tabFolder.onBottom ? y - marginHeight -
-					// highlight_margin
-					// - borderTop: y - marginHeight - highlight_header -
-					// tabHeight
-					// - borderTop;
 					y = onBottom ? y - marginHeight - borderTop
 							: y - marginHeight - tabHeight - borderTop - TAB_OUTLINE;
 					height = height + borderBottom + borderTop + 2 * marginHeight + tabHeight + TAB_OUTLINE;
@@ -143,7 +104,7 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 			break;
 		default:
 			if (0 <= part && part < parent.getItemCount()) {
-				x -= ITEM_LEFT_MARGIN;// - (CORNER_SIZE/2);
+				x -= ITEM_LEFT_MARGIN;
 				width += ITEM_LEFT_MARGIN + ITEM_RIGHT_MARGIN + 1;
 				y -= ITEM_TOP_MARGIN;
 				height += ITEM_TOP_MARGIN + ITEM_BOTTOM_MARGIN;
@@ -205,44 +166,6 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 			}
 		}
 		super.draw(part, state, bounds, gc);
-	}
-
-	void drawCorners(GC gc, Rectangle bounds) {
-		Color bg = gc.getBackground();
-		Color fg = gc.getForeground();
-		Color toFill = parent.getParent().getBackground();
-		gc.setAlpha(255);
-		gc.setBackground(toFill);
-		gc.setForeground(toFill);
-		int leftX = bounds.x - 1;
-		int topY = bounds.y - 1;
-		int rightX = bounds.x + bounds.width;
-		int bottomY = bounds.y + bounds.height;
-		drawCutout(gc, leftX, topY, CirclePart.LEFT_TOP);
-		drawCutout(gc, rightX, topY, CirclePart.RIGHT_TOP);
-		drawCutout(gc, leftX, bottomY, CirclePart.LEFT_BOTTOM);
-		drawCutout(gc, rightX, bottomY, CirclePart.RIGHT_BOTTOM);
-		gc.setBackground(bg);
-		gc.setForeground(fg);
-	}
-
-	private void drawCutout(GC gc, int x, int y, CirclePart side) {
-		int centerX = x;
-		int centerY = y;
-
-		int[] circle = drawCircle(centerX, centerY, side);
-		int[] result = new int[circle.length + 2];
-		result[0] = x;
-		result[1] = y;
-		int count = circle.length / 2;
-		for (int idx = 0; idx < count; idx++) {
-			int destIdx = idx * 2 + 2;
-			int srcIdx = (count - 1 - idx) * 2;
-			result[destIdx] = circle[srcIdx];
-			result[destIdx + 1] = circle[srcIdx + 1];
-		}
-
-		gc.fillPolygon(result);
 	}
 
 	void drawTabHeader(GC gc, Rectangle bounds, int state) {
@@ -373,208 +296,16 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 		}
 	}
 
-	static int[] drawCircle(int xC, int yC, CirclePart circlePart) {
-		int x = 0, y = 0, u = 1, v = - 1, e = 0;
-		int[] points = new int[1024];
-		int[] pointsMirror = new int[1024];
-		int loop = 0;
-		int loopMirror = 0;
-		while (x < y) {
-			loop = drawCirclePoint(loop, xC, yC, points, x, y, circlePart);
-			x++;
-			e += u;
-			u += 2;
-			if (v < 2 * e) {
-				y--;
-				e -= v;
-				v -= 2;
-			}
-			if (x > y)
-				break;
-			loopMirror = drawCirclePoint(loopMirror, xC, yC, pointsMirror, y, x, circlePart);
-			// grow?
-			if ((loop + 1) > points.length) {
-				int length = points.length * 2;
-				int[] newPointTable = new int[length];
-				int[] newPointTableMirror = new int[length];
-				System.arraycopy(points, 0, newPointTable, 0, points.length);
-				points = newPointTable;
-				System.arraycopy(pointsMirror, 0, newPointTableMirror, 0, pointsMirror.length);
-				pointsMirror = newPointTableMirror;
-			}
-		}
-		int[] finalArray = new int[loop + loopMirror];
-		System.arraycopy(points, 0, finalArray, 0, loop);
-		for (int i = loopMirror - 1, j = loop; i > 0; i = i - 2, j = j + 2) {
-			int tempY = pointsMirror[i];
-			int tempX = pointsMirror[i - 1];
-			finalArray[j] = tempX;
-			finalArray[j + 1] = tempY;
-		}
-		return finalArray;
-	}
-
-	private static int drawCirclePoint(int loop, int xC, int yC, int[] points, int x, int y, CirclePart circlePart) {
-		switch (circlePart) {
-		case RIGHT_BOTTOM:
-			points[loop++] = xC + x;
-			points[loop++] = yC + y;
-			break;
-		case RIGHT_TOP:
-			points[loop++] = xC + y;
-			points[loop++] = yC - x;
-			break;
-		case LEFT_TOP:
-			points[loop++] = xC - x;
-			points[loop++] = yC - y;
-			break;
-		case LEFT_BOTTOM:
-			points[loop++] = xC - y;
-			points[loop++] = yC + x;
-			break;
-		}
-		return loop;
-	}
-
-	static RGB blend(RGB c1, RGB c2, int ratio) {
-		int r = blend(c1.red, c2.red, ratio);
-		int g = blend(c1.green, c2.green, ratio);
-		int b = blend(c1.blue, c2.blue, ratio);
-		return new RGB(r, g, b);
-	}
-
-	static int blend(int v1, int v2, int ratio) {
-		int b = (ratio * v1 + (100 - ratio) * v2) / 100;
-		return Math.min(255, b);
-	}
-
-	public ImageData blur(Image src, int radius, int sigma) {
-		float[] kernel = create1DKernel(radius, sigma);
-
-		ImageData imgPixels = src.getImageData();
-		int width = imgPixels.width;
-		int height = imgPixels.height;
-
-		int[] inPixels = new int[width * height];
-		int[] outPixels = new int[width * height];
-		int offset = 0;
-		for (int y = 0; y < height; y++) {
-			for (int x = 0; x < width; x++) {
-				RGB rgb = imgPixels.palette.getRGB(imgPixels.getPixel(x, y));
-				if (rgb.red == 255 && rgb.green == 255 && rgb.blue == 255) {
-					inPixels[offset] = (rgb.red << 16) | (rgb.green << 8) | rgb.blue;
-				} else {
-					inPixels[offset] = (imgPixels.getAlpha(x, y) << 24) | (rgb.red << 16) | (rgb.green << 8) | rgb.blue;
-				}
-				offset++;
-			}
-		}
-
-		convolve(kernel, inPixels, outPixels, width, height, true);
-		convolve(kernel, outPixels, inPixels, height, width, true);
-
-		ImageData dst = new ImageData(imgPixels.width, imgPixels.height, 24, new PaletteData(0xff0000, 0xff00, 0xff));
-
-		dst.setPixels(0, 0, inPixels.length, inPixels, 0);
-		offset = 0;
-		for (int y = 0; y < height; y++) {
-			for (int x = 0; x < width; x++) {
-				if (inPixels[offset] == -1) {
-					dst.setAlpha(x, y, 0);
-				} else {
-					int a = (inPixels[offset] >> 24) & 0xff;
-					// if (a < 150) a = 0;
-					dst.setAlpha(x, y, a);
-				}
-				offset++;
-			}
-		}
-		return dst;
-	}
-
-	private void convolve(float[] kernel, int[] inPixels, int[] outPixels, int width, int height, boolean alpha) {
-		int kernelWidth = kernel.length;
-		int kernelMid = kernelWidth / 2;
-		for (int y = 0; y < height; y++) {
-			int index = y;
-			int currentLine = y * width;
-			for (int x = 0; x < width; x++) {
-				// do point
-				float a = 0, r = 0, g = 0, b = 0;
-				for (int k = -kernelMid; k <= kernelMid; k++) {
-					float val = kernel[k + kernelMid];
-					int xcoord = x + k;
-					if (xcoord < 0)
-						xcoord = 0;
-					if (xcoord >= width)
-						xcoord = width - 1;
-					int pixel = inPixels[currentLine + xcoord];
-					// float alp = ((pixel >> 24) & 0xff);
-					a += val * ((pixel >> 24) & 0xff);
-					r += val * (((pixel >> 16) & 0xff));
-					g += val * (((pixel >> 8) & 0xff));
-					b += val * (((pixel) & 0xff));
-				}
-				int ia = alpha ? clamp((int) (a + 0.5)) : 0xff;
-				int ir = clamp((int) (r + 0.5));
-				int ig = clamp((int) (g + 0.5));
-				int ib = clamp((int) (b + 0.5));
-				outPixels[index] = (ia << 24) | (ir << 16) | (ig << 8) | ib;
-				index += height;
-			}
-		}
-
-	}
-
-	private int clamp(int value) {
-		if (value > 255)
-			return 255;
-		if (value < 0)
-			return 0;
-		return value;
-	}
-
-	private float[] create1DKernel(int radius, int sigma) {
-		// guideline: 3*sigma should be the radius
-		int size = radius * 2 + 1;
-		float[] kernel = new float[size];
-		int radiusSquare = radius * radius;
-		float sigmaSquare = 2 * sigma * sigma;
-		float piSigma = 2 * (float) Math.PI * sigma;
-		float sqrtSigmaPi2 = (float) Math.sqrt(piSigma);
-		int start = size / 2;
-		int index = 0;
-		float total = 0;
-		for (int i = -start; i <= start; i++) {
-			float d = i * i;
-			if (d > radiusSquare) {
-				kernel[index] = 0;
-			} else {
-				kernel[index] = (float) Math.exp(-(d) / sigmaSquare) / sqrtSigmaPi2;
-			}
-			total += kernel[index];
-			index++;
-		}
-		for (int i = 0; i < size; i++) {
-			kernel[i] /= total;
-		}
-		return kernel;
-	}
-
 	private void drawCustomBackground(GC gc, Rectangle bounds, int state) {
 		Rectangle partHeaderBounds = computeTrim(PART_HEADER, state, bounds.x, bounds.y, bounds.width, bounds.height);
 
-		drawTabBackground(gc, partHeaderBounds);
-	}
-
-	private void drawTabBackground(GC gc, Rectangle partHeaderBounds) {
 		boolean onBottom = parent.getTabPosition() == SWT.BOTTOM;
 		int borderTop = onBottom ? INNER_KEYLINE + OUTER_KEYLINE : TOP_KEYLINE + OUTER_KEYLINE;
 		Rectangle parentBounds = parent.getBounds();
 		int y = (onBottom) ? 0 : partHeaderBounds.y + partHeaderBounds.height - 1;
 		int height = (onBottom) ? parentBounds.height - partHeaderBounds.height + 2 * paddingTop + 2 * borderTop
 				: parentBounds.height - partHeaderBounds.height;
-
+		
 		gc.setBackground(selectedTabFillColor);
 		gc.fillRectangle(partHeaderBounds.x, y, partHeaderBounds.width, height);
 	}
