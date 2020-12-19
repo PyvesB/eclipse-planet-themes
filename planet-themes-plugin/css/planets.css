@@ -140,12 +140,14 @@ IEclipsePreferences#org-eclipse-ui-editors:io-github-pyvesb-eclipse_planet_theme
     'searchResultTextStyle=DASHED_BOX';
 }
 
+/* recordKeyword, varKeyword, yieldKeyword are for Eclipse 2020-06 & 2020-09, but were replaced by restrictedKeywords in 2020-12. */
 IEclipsePreferences#org-eclipse-jdt-ui:io-github-pyvesb-eclipse_planet_themes-planets {
   preferences:
     'java_keyword_bold=true'
     'java_keyword_return_bold=true'
     'semanticHighlighting.methodDeclarationName.enabled=true'
     'semanticHighlighting.methodDeclarationName.bold=true'
+    'semanticHighlighting.restrictedKeywords.bold=true'
     'semanticHighlighting.recordKeyword.bold=true'
     'semanticHighlighting.varKeyword.bold=true'
     'semanticHighlighting.yieldKeyword.bold=true';
