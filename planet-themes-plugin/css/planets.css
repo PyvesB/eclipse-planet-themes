@@ -40,13 +40,7 @@ Composite#org-eclipse-ui-editorss * CTabFolder {
   background-color: '#io-github-pyvesb-eclipse_planet_themes-ACCENT_COLOR';
 }
 
-CTabFolder.active > CTabItem:selected,
-Shell[swt-data-class ~= 'org.eclipse.jface.dialogs.Dialog'] * CTabFolder > CTabItem:selected {
-  color: white;
-}
-
 CTabItem {
-  color: none;
   swt-show-close: false;
 }
 

@@ -153,7 +153,7 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 				} else {
 					drawUnselectedTab(gc, bounds, state);
 					if ((state & SWT.HOT) == 0 && !parent.isFocusControl()) {
-						gc.setAlpha(0x7f);
+						gc.setAlpha(0xcf);
 						state &= ~SWT.BACKGROUND;
 						super.draw(part, state, bounds, gc);
 						gc.setAlpha(0xff);
