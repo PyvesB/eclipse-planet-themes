@@ -89,11 +89,6 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 	}
 
 	@Override
-	public void setUnselectedHotTabsColorBackground(Color color) {
-		this.hotUnselectedTabsColorBackground = color;
-	}
-
-	@Override
 	protected Rectangle computeTrim(int part, int state, int x, int y, int width, int height) {
 		boolean onBottom = parent.getTabPosition() == SWT.BOTTOM;
 		int borderTop = onBottom ? INNER_KEYLINE + OUTER_KEYLINE : TOP_KEYLINE + OUTER_KEYLINE;
@@ -566,6 +561,24 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 		return kernel;
 	}
 
+	private void drawCustomBackground(GC gc, Rectangle bounds, int state) {
+		Rectangle partHeaderBounds = computeTrim(PART_HEADER, state, bounds.x, bounds.y, bounds.width, bounds.height);
+
+		drawTabBackground(gc, partHeaderBounds);
+	}
+
+	private void drawTabBackground(GC gc, Rectangle partHeaderBounds) {
+		boolean onBottom = parent.getTabPosition() == SWT.BOTTOM;
+		int borderTop = onBottom ? INNER_KEYLINE + OUTER_KEYLINE : TOP_KEYLINE + OUTER_KEYLINE;
+		Rectangle parentBounds = parent.getBounds();
+		int y = (onBottom) ? 0 : partHeaderBounds.y + partHeaderBounds.height - 1;
+		int height = (onBottom) ? parentBounds.height - partHeaderBounds.height + 2 * paddingTop + 2 * borderTop
+				: parentBounds.height - partHeaderBounds.height;
+
+		gc.setBackground(selectedTabFillColor);
+		gc.fillRectangle(partHeaderBounds.x, y, partHeaderBounds.width, height);
+	}
+	
 	public Rectangle getPadding() {
 		return new Rectangle(paddingTop, paddingRight, paddingBottom, paddingLeft);
 	}
@@ -579,13 +592,9 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 	}
 
 	@Override
-	public void setCornerRadius(int radius) {}
-
-	@Override
-	public void setShadowVisible(boolean visible) {}
-
-	@Override
-	public void setShadowColor(Color color) {}
+	public void setUnselectedHotTabsColorBackground(Color color) {
+		this.hotUnselectedTabsColorBackground = color;
+	}
 
 	@Override
 	public void setOuterKeyline(Color color) {
@@ -604,6 +613,18 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 		selectedTabFillColor = color;
 		parent.redraw();
 	}
+	
+	@Override
+	public void setTabOutline(Color color) {
+		this.tabOutlineColor = color;
+		parent.redraw();
+	}
+	
+	@Override
+	public void setSelectedTabHighlightTop(boolean drawTabHiglightOnTop) {
+		this.drawTabHighlightOnTop = drawTabHiglightOnTop;
+		parent.redraw();
+	}
 
 	@Override
 	public void setSelectedTabFill(Color[] colors, int[] percents) {
@@ -615,40 +636,19 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 
 	@Override
 	public void setUnselectedTabsColor(Color[] colors, int[] percents) {}
+	
+	@Override
+	public void setCornerRadius(int radius) {}
 
 	@Override
-	public void setTabOutline(Color color) {
-		this.tabOutlineColor = color;
-		parent.redraw();
-	}
+	public void setShadowVisible(boolean visible) {}
+
+	@Override
+	public void setShadowColor(Color color) {}
 
 	@Override
 	public void setInnerKeyline(Color color) {}
 
-	private void drawCustomBackground(GC gc, Rectangle bounds, int state) {
-		Rectangle partHeaderBounds = computeTrim(PART_HEADER, state, bounds.x, bounds.y, bounds.width, bounds.height);
-
-		drawTabBackground(gc, partHeaderBounds);
-	}
-
-	private void drawTabBackground(GC gc, Rectangle partHeaderBounds) {
-		boolean onBottom = parent.getTabPosition() == SWT.BOTTOM;
-		int borderTop = onBottom ? INNER_KEYLINE + OUTER_KEYLINE : TOP_KEYLINE + OUTER_KEYLINE;
-		Rectangle parentBounds = parent.getBounds();
-		int y = (onBottom) ? 0 : partHeaderBounds.y + partHeaderBounds.height - 1;
-		int height = (onBottom) ? parentBounds.height - partHeaderBounds.height + 2 * paddingTop + 2 * borderTop
-				: parentBounds.height - partHeaderBounds.height;
-
-		gc.setBackground(selectedTabFillColor);
-		gc.fillRectangle(partHeaderBounds.x, y, partHeaderBounds.width, height);
-	}
-
-	@Override
-	public void setSelectedTabHighlightTop(boolean drawTabHiglightOnTop) {
-		this.drawTabHighlightOnTop = drawTabHiglightOnTop;
-		parent.redraw();
-	}
-	
 	@Override
 	public void setDrawCustomTabContentBackground(boolean drawCustomTabContentBackground) {}
 
