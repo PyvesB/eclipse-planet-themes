@@ -27,7 +27,6 @@ import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.PaletteData;
-import org.eclipse.swt.graphics.Pattern;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.graphics.Rectangle;
@@ -79,7 +78,6 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 	Rectangle rectShape;
 
 	Color outerKeyline, selectedTabFillColor, tabOutlineColor, hotUnselectedTabsColorBackground, selectedTabHighlightColor;
-	boolean active;
 
 	int paddingLeft = 0, paddingRight = 0, paddingTop = 0, paddingBottom = 0;
 
@@ -198,7 +196,7 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 					super.draw(part, state, bounds, gc);
 				} else {
 					drawUnselectedTab(gc, bounds, state);
-					if ((state & SWT.HOT) == 0 && !active) {
+					if ((state & SWT.HOT) == 0 && !parent.isFocusControl()) {
 						gc.setAlpha(0x7f);
 						state &= ~SWT.BACKGROUND;
 						super.draw(part, state, bounds, gc);
@@ -295,10 +293,8 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 			points[index++] = startX;
 			points[index++] = bottomY;
 		} else {
-			if (active) {
-				points[index++] = INNER_KEYLINE + OUTER_KEYLINE;
-				points[index++] = bottomY;
-			}
+			points[index++] = INNER_KEYLINE + OUTER_KEYLINE;
+			points[index++] = bottomY;
 			points[index++] = startX;
 			points[index++] = bottomY;
 		}
@@ -312,10 +308,8 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 		points[index++] = endX;
 		points[index++] = bottomY;
 
-		if (active) {
-			points[index++] = parentSize.x - INNER_KEYLINE - OUTER_KEYLINE;
-			points[index++] = bottomY;
-		}
+		points[index++] = parentSize.x - INNER_KEYLINE - OUTER_KEYLINE;
+		points[index++] = bottomY;
 
 		int[] tmpPoints = new int[index];
 		System.arraycopy(points, 0, tmpPoints, 0, index);
@@ -355,29 +349,12 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 
 		gc.setForeground(tabOutlineColor);
 
-		Color gradientLineTop = null;
-		Pattern foregroundPattern = null;
-		if (!active && !onBottom) {
-			RGB blendColor = gc.getDevice().getSystemColor(SWT.COLOR_WIDGET_LIGHT_SHADOW).getRGB();
-			RGB topGradient = blend(blendColor, tabOutlineColor.getRGB(), 40);
-			gradientLineTop = new Color(gc.getDevice(), topGradient);
-			foregroundPattern = new Pattern(gc.getDevice(), 0, 0, 0, bounds.height + 1, gradientLineTop,
-					gc.getDevice().getSystemColor(SWT.COLOR_WHITE));
-			gc.setForegroundPattern(foregroundPattern);
-		}
-
 		gc.drawPolyline(tmpPoints);
 
 		gc.setClipping((Rectangle) null);
 
-		if (active) {
-			gc.setForeground(outerKeyline);
-			gc.drawRectangle(rectShape);
-		} else {
-			if (!onBottom) {
-				gc.drawLine(startX, 0, endX, 0);
-			}
-		}
+		gc.setForeground(outerKeyline);
+		gc.drawRectangle(rectShape);
 
 		if (selectedTabHighlightColor != null) {
 			gc.setBackground(selectedTabHighlightColor);
@@ -389,10 +366,6 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 			int horizontalOffset = itemIndex == 0 ? 0 : 1;
 			int widthAdjustment = 0;
 			gc.fillRectangle(bounds.x + horizontalOffset, bounds.y + verticalOffset, bounds.width - widthAdjustment, 3);
-		}
-
-		if (foregroundPattern != null) {
-			foregroundPattern.dispose();
 		}
 	}
 
@@ -617,10 +590,6 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 	@Override
 	public void setOuterKeyline(Color color) {
 		this.outerKeyline = color;
-		// TODO: HACK! Should be set based on pseudo-state.
-		if (color != null) {
-			setActive(!(color.getRed() == 255 && color.getGreen() == 255 && color.getBlue() == 255));
-		}
 		parent.redraw();
 	}
 
@@ -655,10 +624,6 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 
 	@Override
 	public void setInnerKeyline(Color color) {}
-
-	public void setActive(boolean active) {
-		this.active = active;
-	}
 
 	private void drawCustomBackground(GC gc, Rectangle bounds, int state) {
 		Rectangle partHeaderBounds = computeTrim(PART_HEADER, state, bounds.x, bounds.y, bounds.width, bounds.height);
