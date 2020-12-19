@@ -601,13 +601,13 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 
 	@Override
 	public void setSelectedTabFill(Color color) {
-		setSelectedTabFill(new Color[] { color }, new int[] { 100 });
+		selectedTabFillColor = color;
+		parent.redraw();
 	}
 
 	@Override
 	public void setSelectedTabFill(Color[] colors, int[] percents) {
-		selectedTabFillColor = colors[0];
-		parent.redraw();
+		setSelectedTabFill(colors[0]);
 	}
 
 	@Override
