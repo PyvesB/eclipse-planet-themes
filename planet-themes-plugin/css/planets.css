@@ -1,17 +1,12 @@
 CTabFolder {
   padding: 0px 0px 1px 0px;
-  swt-tab-renderer: url('bundleclass://org.eclipse.e4.ui.workbench.renderers.swt/org.eclipse.e4.ui.workbench.renderers.swt.CTabRendering');
-  swt-corner-radius: 0px;
+  swt-tab-renderer: url('bundleclass://io.github.pyvesb.eclipse_planet_themes/io.github.pyvesb.eclipse_planet_themes.CTabFolderPlanetsRenderer');
   swt-tab-outline: '#io-github-pyvesb-eclipse_planet_themes-BACKGROUND_COLOR';
   swt-selected-tab-fill: '#io-github-pyvesb-eclipse_planet_themes-BACKGROUND_COLOR';
   swt-outer-keyline-color: '#io-github-pyvesb-eclipse_planet_themes-BACKGROUND_COLOR';
-  swt-unselected-hot-tab-color-background: '#io-github-pyvesb-eclipse_planet_themes-BACKGROUND_COLOR'; 
-  swt-unselected-tabs-color: '#io-github-pyvesb-eclipse_planet_themes-BACKGROUND_COLOR';
   swt-maximize-visible: false;
   swt-selected-tab-highlight: '#io-github-pyvesb-eclipse_planet_themes-ACCENT_COLOR';
   swt-selected-highlight-top: true;
-  swt-shadow-visible: false;
-  swt-draw-custom-tab-content-background: true;
 }
 
 CTabFolder.active {
@@ -45,13 +40,7 @@ Composite#org-eclipse-ui-editorss * CTabFolder {
   background-color: '#io-github-pyvesb-eclipse_planet_themes-ACCENT_COLOR';
 }
 
-CTabFolder.active > CTabItem:selected,
-Shell[swt-data-class ~= 'org.eclipse.jface.dialogs.Dialog'] * CTabFolder > CTabItem:selected {
-  color: white;
-}
-
 CTabItem {
-  color: none;
   swt-show-close: false;
 }
 
