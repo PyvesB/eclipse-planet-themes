@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2014 - 2020 Frank Appel
+ * Copyright (c) 2014 - 2021 Frank Appel
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,9 +24,10 @@ import java.nio.file.Files;
 import java.util.Enumeration;
 
 import org.eclipse.core.runtime.FileLocator;
-import org.eclipse.core.runtime.ILog;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.swt.widgets.Display;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.FrameworkUtil;
@@ -47,17 +48,13 @@ class FontLoader {
     try {
       doLoad( bundle, display );
     } catch( RuntimeException rte ) {
-      getLogger( bundle ).error( "Unable to load fonts.", rte );
+      Platform.getLog( bundle ).log( new Status( IStatus.ERROR, bundle.getSymbolicName(), "Unable to load fonts.", rte ) );
     }
   }
 
   private void doLoad( Bundle bundle, Display display ) {
     list( getFontPaths( bundle, fontDirectory ) )
       .forEach( fontPath -> loadFont( bundle, fontPath, display ) );
-  }
-
-  private static ILog getLogger( Bundle bundle ) {
-     return Platform.getLog( bundle );
   }
 
   private static Enumeration<String> getFontPaths( Bundle bundle, String fontDirectory ) {

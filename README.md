@@ -45,7 +45,7 @@ Check out what's new in the [latest releases](https://github.com/PyvesB/eclipse-
 
 ## :cd: Plugin installation
 
-Note that all themes require Eclipse 2020-06 or more recent.
+Note that all themes require Eclipse Oxygen (4.7) or more recent.
 
 You can download and install the plugin via the [Eclipse Marketplace](https://marketplace.eclipse.org/content/planet-themes/), or simply drag the below button to your running Eclipse workspace:
 
