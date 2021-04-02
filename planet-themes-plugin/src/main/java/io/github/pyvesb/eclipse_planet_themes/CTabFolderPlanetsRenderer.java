@@ -130,7 +130,6 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 
 	@Override
 	protected void draw(int part, int state, Rectangle bounds, GC gc) {
-
 		switch (part) {
 		case PART_BACKGROUND:
 			this.drawCustomBackground(gc, bounds, state);
@@ -262,7 +261,6 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 		tmpPoints = computeSquareTabOutline(itemIndex, onBottom, startX, endX, bottomY, bounds, parentSize);
 		bounds.height++; // increase area to fill by outline thickness
 		gc.fillRectangle(bounds);
-		
 
 		gc.drawLine(selectionX1, selectionY1, selectionX2, selectionY2);
 
@@ -374,4 +372,3 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 	public void setDrawCustomTabContentBackground(boolean drawCustomTabContentBackground) {}
 
 }
-
