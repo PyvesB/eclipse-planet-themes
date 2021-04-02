@@ -2,7 +2,7 @@
 <feature
       id="io.github.pyvesb.eclipse_planet_themes"
       label="Planet Themes"
-      version="0.2.0.qualifier"
+      version="0.2.1.qualifier"
       provider-name="PyvesB">
 
    <description url="https://github.com/PyvesB/eclipse-planet-themes">
@@ -297,7 +297,7 @@ version(s), and exceptions or additional permissions here}.&quot;
          id="io.github.pyvesb.eclipse_planet_themes"
          download-size="0"
          install-size="0"
-         version="0.2.0"
+         version="0.2.1"
          unpack="false"/>
 
    <plugin
