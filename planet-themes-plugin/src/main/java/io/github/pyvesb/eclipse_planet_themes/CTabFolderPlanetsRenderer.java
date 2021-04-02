@@ -260,6 +260,7 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 		selectionY2 = bottomY;
 
 		tmpPoints = computeSquareTabOutline(itemIndex, onBottom, startX, endX, bottomY, bounds, parentSize);
+		bounds.height++; // increase area to fill by outline thickness
 		gc.fillRectangle(bounds);
 		
 
