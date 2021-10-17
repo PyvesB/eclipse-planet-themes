@@ -53,7 +53,7 @@ You can download and install the plugin via the [Eclipse Marketplace](https://ma
 <a href="http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=5176732" class="drag" title="Drag to your running Eclipse* workspace. *Requires Eclipse Marketplace Client"><img width="100" typeof="foaf:Image" class="img-responsive" src="https://marketplace.eclipse.org/sites/all/themes/solstice/public/images/marketplace/btn-install.svg" alt="Drag to your running Eclipse* workspace. *Requires Eclipse Marketplace Client" /></a>
 </p>
 
-Alternatively, use the following update site: `https://raw.githubusercontent.com/PyvesB/eclipse-planet-themes/updatesite`
+Alternatively, use the following update site: `https://cdn.jsdelivr.net/gh/PyvesB/eclipse-planet-themes@updatesite/`
 
 Once installed, open Eclipse's preferences, navigate to `General` -> `Appearance` and select the planet of your choice in the `Theme` dropdown. Restart Eclipse and enjoy your new theme!
 

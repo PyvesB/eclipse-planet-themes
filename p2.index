@@ -1,0 +1,4 @@
+#Sun Aug 02 18:46:46 UTC 2020
+artifact.repository.factory.order=p2artifacts.xml,\!
+version=1
+metadata.repository.factory.order=p2content.xml,\!
