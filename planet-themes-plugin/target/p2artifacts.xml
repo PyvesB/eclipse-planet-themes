@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?artifactRepository version='1.1.0'?>
+<artifacts size='1'>
+  <artifact classifier='osgi.bundle' id='io.github.pyvesb.eclipse_planet_themes' version='0.2.2'>
+    <properties size='5'>
+      <property name='artifact.size' value='782743'/>
+      <property name='download.size' value='782743'/>
+      <property name='maven-groupId' value='io.github.pyvesb.eclipse_planet_themes'/>
+      <property name='maven-artifactId' value='io.github.pyvesb.eclipse_planet_themes'/>
+      <property name='maven-version' value='0.2.2'/>
+    </properties>
+  </artifact>
+</artifacts>
