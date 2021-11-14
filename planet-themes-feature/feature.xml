@@ -290,7 +290,7 @@ version(s), and exceptions or additional permissions here}.&quot;
    </license>
 
    <url>
-      <update label="Planet Themes update site" url="https://cdn.jsdelivr.net/gh/PyvesB/eclipse-planet-themes@updatesite/"/>
+      <update label="Planet Themes update site" url="https://gitcdn.link/cdn/PyvesB/eclipse-planet-themes/updatesite/"/>
    </url>
 
    <plugin

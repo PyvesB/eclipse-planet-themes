@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <description name="Planet Themes update site" url="https://cdn.jsdelivr.net/gh/PyvesB/eclipse-planet-themes@updatesite/">
+   <description name="Planet Themes update site" url="https://gitcdn.link/cdn/PyvesB/eclipse-planet-themes/updatesite/">
       The Planet Themes plugin update site.
    </description>
    <feature id="io.github.pyvesb.eclipse_planet_themes">
