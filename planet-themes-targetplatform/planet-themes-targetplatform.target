@@ -15,7 +15,7 @@
 			<unit id="org.eclipse.osgi" version="0.0.0"/>
 			<unit id="javax.inject" version="0.0.0"/>
 		</location>
-		<location path="planet-themes-targetplatform/xiliary" type="Directory">
+		<location path="${project_loc:/planet-themes-targetplatform}/xiliary" type="Directory">
 			<unit id="com.codeaffine.eclipse.ui.swt.theme.feature.feature.group" version="0.8.0.20200802-1642"/>
 		</location>
 	</locations>
