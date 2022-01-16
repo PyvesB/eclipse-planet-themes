@@ -1,13 +1,4 @@
-# Planet Themes 
-<a href="https://github.com/PyvesB/eclipse-planet-themes/blob/master/LICENSE">
-<img src ="https://img.shields.io/github/license/PyvesB/eclipse-planet-themes.svg" />
-</a>
-<a href="https://github.com/PyvesB/eclipse-planet-themes/issues">
-<img src ="https://img.shields.io/github/issues/PyvesB/eclipse-planet-themes.svg" />
-</a>
-<a href="https://github.com/PyvesB/eclipse-planet-themes/stargazers">
-<img src ="https://img.shields.io/github/stars/PyvesB/eclipse-planet-themes.svg" />
-</a>
+# Planet Themes
 <a href="https://marketplace.eclipse.org/content/planet-themes">
 <img src ="https://img.shields.io/eclipse-marketplace/v/planet-themes.svg" />
 </a>
