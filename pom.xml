@@ -16,7 +16,7 @@
 	</modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<tycho.version>2.6.0-SNAPSHOT</tycho.version>
+		<tycho.version>2.6.0</tycho.version>
 	</properties>
 	<build>
 		<plugins>
