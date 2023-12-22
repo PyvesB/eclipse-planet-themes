@@ -13,6 +13,7 @@
 			<unit id="org.eclipse.e4.ui.css.swt" version="0.0.0"/>
 			<unit id="org.eclipse.e4.ui.css.swt.theme" version="0.0.0"/>
 			<unit id="org.eclipse.osgi" version="0.0.0"/>
+			<unit id="com.google.gson" version="0.0.0"/>
 			<unit id="javax.inject" version="0.0.0"/>
 		</location>
 		<location path="${project_loc:/planet-themes-targetplatform}/xiliary" type="Directory">
