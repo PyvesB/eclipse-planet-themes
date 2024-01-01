@@ -3,7 +3,7 @@
 <target name="planet-themes-targetplatform">
 	<locations>
 		<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-			<repository location="https://download.eclipse.org/releases/2023-12/"/>
+			<repository location="https://download.eclipse.org/releases/2023-03/"/>
 			<unit id="org.eclipse.platform.ide" version="0.0.0"/>
 			<unit id="org.eclipse.sdk.ide" version="0.0.0"/>
 			<unit id="org.eclipse.core.runtime" version="0.0.0"/>
