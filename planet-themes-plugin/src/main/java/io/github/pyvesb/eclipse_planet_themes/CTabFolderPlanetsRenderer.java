@@ -20,8 +20,6 @@
  *******************************************************************************/
 package io.github.pyvesb.eclipse_planet_themes;
 
-import javax.inject.Inject;
-
 import org.eclipse.e4.ui.internal.css.swt.ICTabRendering;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
@@ -56,7 +54,6 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 
 	private boolean drawTabHighlightOnTop = true;
 
-	@Inject
 	public CTabFolderPlanetsRenderer(CTabFolder parent) {
 		super(parent);
 	}
