@@ -120,7 +120,6 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 		hHint += paddingTop + paddingBottom;
 		if (0 <= part && part < parent.getItemCount()) {
 			gc.setAdvanced(true);
-			return super.computeSize(part, state, gc, wHint, hHint);
 		}
 		return super.computeSize(part, state, gc, wHint, hHint);
 	}
@@ -203,15 +202,12 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 		int outlineY = onBottom ? bottomY + bounds.height : bottomY - bounds.height - 1;
 		int[] points = new int[12];
 
-		if (itemIndex == 0 && bounds.x == -computeTrim(CTabFolderRenderer.PART_HEADER, SWT.NONE, 0, 0, 0, 0).x) {
-			points[index++] = startX;
-			points[index++] = bottomY;
-		} else {
+		if (itemIndex != 0 || bounds.x != -computeTrim(CTabFolderRenderer.PART_HEADER, SWT.NONE, 0, 0, 0, 0).x) {
 			points[index++] = INNER_KEYLINE + OUTER_KEYLINE;
 			points[index++] = bottomY;
-			points[index++] = startX;
-			points[index++] = bottomY;
 		}
+		points[index++] = startX;
+		points[index++] = bottomY;
 
 		points[index++] = startX;
 		points[index++] = outlineY;
@@ -239,7 +235,6 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 		int bottomY = onBottom ? bounds.y : bounds.y + bounds.height;
 		int selectionX1, selectionY1, selectionX2, selectionY2;
 		int startX, endX;
-		int[] tmpPoints = null;
 		Point parentSize = parent.getSize();
 
 		gc.setClipping(0, onBottom ? bounds.y : bounds.y, parentSize.x - INNER_KEYLINE - OUTER_KEYLINE,
@@ -255,7 +250,7 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 		selectionX2 = endX - 1;
 		selectionY2 = bottomY;
 
-		tmpPoints = computeSquareTabOutline(itemIndex, onBottom, startX, endX, bottomY, bounds, parentSize);
+		int[] tmpPoints = computeSquareTabOutline(itemIndex, onBottom, startX, endX, bottomY, bounds, parentSize);
 		bounds.height++; // increase area to fill by outline thickness
 		gc.fillRectangle(bounds);
 
@@ -292,11 +287,11 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 		int y = (onBottom) ? 0 : partHeaderBounds.y + partHeaderBounds.height - 1;
 		int height = (onBottom) ? parentBounds.height - partHeaderBounds.height + 2 * paddingTop + 2 * borderTop
 				: parentBounds.height - partHeaderBounds.height;
-		
+
 		gc.setBackground(selectedTabFillColor);
 		gc.fillRectangle(partHeaderBounds.x, y, partHeaderBounds.width, height);
 	}
-	
+
 	public Rectangle getPadding() {
 		return new Rectangle(paddingTop, paddingRight, paddingBottom, paddingLeft);
 	}
@@ -326,13 +321,13 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 		selectedTabFillColor = color;
 		parent.redraw();
 	}
-	
+
 	@Override
 	public void setTabOutline(Color color) {
 		this.tabOutlineColor = color;
 		parent.redraw();
 	}
-	
+
 	@Override
 	public void setSelectedTabHighlightTop(boolean drawTabHiglightOnTop) {
 		this.drawTabHighlightOnTop = drawTabHiglightOnTop;
@@ -352,7 +347,7 @@ public class CTabFolderPlanetsRenderer extends CTabFolderRenderer implements ICT
 
 	@Override
 	public void setUnselectedTabsColor(Color[] colors, int[] percents) {}
-	
+
 	@Override
 	public void setCornerRadius(int radius) {}
 
