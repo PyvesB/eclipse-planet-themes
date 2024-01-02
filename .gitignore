@@ -1,3 +1,4 @@
 target/
 .polyglot.*
 *.prefs
+/.metadata/
