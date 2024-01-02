@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Planet Themes
 Bundle-SymbolicName: io.github.pyvesb.eclipse_planet_themes;singleton:=true
-Bundle-Version: 0.2.5
+Bundle-Version: 0.2.6
 Automatic-Module-Name: io.github.pyvesb.eclipse_planet_themes
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
@@ -13,6 +13,5 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.e4.ui.css.swt,
  org.eclipse.e4.ui.css.swt.theme,
  org.eclipse.osgi,
- javax.inject,
  com.codeaffine.eclipse.ui.swt.theme;resolution:=optional
 Export-Package: com.codeaffine.eclipse.ui.swt.theme

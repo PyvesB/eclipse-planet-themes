@@ -37,7 +37,7 @@ class FontRegistryUpdater {
 
   private static void updateFontEntries( Display display ) {
     FontRegistry fontRegistry = PlatformUI.getWorkbench().getThemeManager().getCurrentTheme().getFontRegistry();
-    if( fontRegistry.getFontData( "org.eclipse.jface.textfont" )[ 0 ].getName().equals( FontLoader.FONT_FACE ) ) {
+    if( FontLoader.FONT_FACE.equals( fontRegistry.getFontData( "org.eclipse.jface.textfont" )[ 0 ].getName() ) ) {
       updateFontEntry( display, fontRegistry, "org.eclipse.ui.workbench.texteditor.blockSelectionModeFont" );
       updateFontEntry( display, fontRegistry, "org.eclipse.jface.textfont" );
       updateFontEntry( display, fontRegistry, "org.eclipse.jdt.ui.editors.textfont" );
