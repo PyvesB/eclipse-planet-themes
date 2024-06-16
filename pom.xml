@@ -15,6 +15,8 @@
 		<module>planet-themes-updatesite</module>
 	</modules>
 	<properties>
+		<javase.version>JavaSE-11</javase.version>
+		<java.version>11</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<tycho.version>2.7.5</tycho.version>
 	</properties>
@@ -31,6 +33,7 @@
 				<artifactId>target-platform-configuration</artifactId>
 				<version>${tycho.version}</version>
 				<configuration>
+					<executionEnvironment>${javase.version}</executionEnvironment>
 					<includePackedArtifacts>true</includePackedArtifacts>
 					<target>
 						<artifact>
