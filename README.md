@@ -28,7 +28,7 @@ Three themes are currently available:
 * Pluto: not much light reaches this distant dwarf planet, leading to a resolutely dark theme. The presence of purple has yet to be explained by astronomers.
 
 A few words to summarise the planetary ambitions:
-* compact: few borders, less visual artifacts, hidden buttons and flat scrollbars on Windows.
+* compact: few borders, less visual artifacts, and hidden buttons.
 * readable: easy on the eyes with low glare, balanced contrasts and an integrated editor font with programming ligatures.
 * outstanding: not a revolution, but hopefully a nice twist to the traditional Eclipse look and feel.
 
@@ -71,6 +71,4 @@ Setting up your own working copy of the project is easy:
 
 Planet Themes are licensed under Eclipse Public License - v 2.0.
 
-The following third-party projects are being used, many thanks to them:
-* [Xiliary](https://github.com/fappel/xiliary) by [Frank Appel](https://github.com/fappel): flat scrollbars on Windows (Eclipse Public License).
-* [Fira Code](https://github.com/tonsky/FiraCode) by [Nikita Prokopov](https://github.com/tonsky): editor font (Open Font License).
+[Fira Code](https://github.com/tonsky/FiraCode) (Open Font License) is being used as the editor font, many thanks to [Nikita Prokopov](https://github.com/tonsky) and other contributors!

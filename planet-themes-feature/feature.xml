@@ -299,44 +299,4 @@ version(s), and exceptions or additional permissions here}.&quot;
          install-size="0"
          version="0.2.6"
          unpack="false"/>
-
-   <plugin
-         id="com.codeaffine.eclipse.swt"
-         download-size="188"
-         install-size="188"
-         version="0.6.0.20200802-1642"
-         unpack="false"/>
-
-   <plugin
-         id="com.codeaffine.eclipse.swt.win"
-         os="win32"
-         download-size="2"
-         install-size="2"
-         version="0.6.0.20200802-1642"
-         fragment="true"
-         unpack="false"/>
-
-   <plugin
-         id="com.codeaffine.eclipse.ui.swt.theme"
-         download-size="40"
-         install-size="40"
-         version="0.8.0.20200802-1642"
-         unpack="false"/>
-
-   <plugin
-         id="com.codeaffine.eclipse.ui.swt.theme.win"
-         os="win32"
-         download-size="1"
-         install-size="1"
-         version="0.8.0.20200802-1642"
-         fragment="true"
-         unpack="false"/>
-
-   <plugin
-         id="com.codeaffine.util"
-         download-size="8"
-         install-size="8"
-         version="0.1.0.20200802-1642"
-         unpack="false"/>
-
 </feature>

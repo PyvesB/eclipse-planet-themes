@@ -12,6 +12,5 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui,
  org.eclipse.e4.ui.css.swt,
  org.eclipse.e4.ui.css.swt.theme,
- org.eclipse.osgi,
- com.codeaffine.eclipse.ui.swt.theme;resolution:=optional
+ org.eclipse.osgi
 Export-Package: com.codeaffine.eclipse.ui.swt.theme
