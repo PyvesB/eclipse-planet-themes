@@ -102,7 +102,7 @@ ColorDefinition#io-github-pyvesb-eclipse_planet_themes-BACKGROUND_COLOR {
 ColorDefinition#io-github-pyvesb-eclipse_planet_themes-ACCENT_COLOR {
   category: '#io-github-pyvesb-eclipse_planet_themes-themeElementCategory';
   label: 'Accent Color';
-  description: 'The color for tab highlights, keylines and scrollbars on Windows.';
+  description: 'The color for tab highlights and keylines.';
 }
 
 ColorDefinition#io-github-pyvesb-eclipse_planet_themes-INTERACTION_COLOR {

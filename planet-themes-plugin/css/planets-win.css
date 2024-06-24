@@ -1,18 +1,5 @@
 Tree, Table {
-  flat-scroll-bar: true;
-  flat-scroll-bar-thumb: '#io-github-pyvesb-eclipse_planet_themes-ACCENT_COLOR';
-  flat-scroll-bar-thumb-top-level: '#io-github-pyvesb-eclipse_planet_themes-ACCENT_COLOR';
-  flat-scroll-bar-page-increment: '#io-github-pyvesb-eclipse_planet_themes-INTERACTION_COLOR';
-  flat-scroll-bar-page-increment-top-level: '#io-github-pyvesb-eclipse_planet_themes-INTERACTION_COLOR';
   swt-lines-visible: false;
-}
-
-StyledText, ScrolledComposite, ScrolledForm, Shell > Table {
-  flat-scroll-bar: true;
-  flat-scroll-bar-thumb: '#io-github-pyvesb-eclipse_planet_themes-ACCENT_COLOR';
-  flat-scroll-bar-thumb-top-level: '#io-github-pyvesb-eclipse_planet_themes-ACCENT_COLOR';
-  flat-scroll-bar-page-increment: '#io-github-pyvesb-eclipse_planet_themes-BACKGROUND_COLOR';
-  flat-scroll-bar-page-increment-top-level: '#io-github-pyvesb-eclipse_planet_themes-BACKGROUND_COLOR';
 }
 
 FontDefinition#org-eclipse-jface-textfont,

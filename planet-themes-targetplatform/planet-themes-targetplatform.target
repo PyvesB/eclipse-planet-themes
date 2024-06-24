@@ -15,9 +15,5 @@
 			<unit id="org.eclipse.osgi" version="0.0.0"/>
 			<unit id="com.google.gson" version="0.0.0"/>
 		</location>
-		<location path="${project_loc:/planet-themes-targetplatform}/xiliary" type="Directory">
-			<unit id="com.codeaffine.eclipse.ui.swt.theme.feature.feature.group" version="0.8.0.20200802-1642"/>
-		</location>
-		<location path="C:\Xilinx\Vitis\2021.1\eclipse\win64.o" type="Profile"/>
 	</locations>
 </target>
