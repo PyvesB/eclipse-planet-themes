@@ -1,5 +1,5 @@
-@import url('platform:/plugin/io.github.pyvesb.eclipse_planet_themes/css/planets.css');
-@import url('platform:/plugin/io.github.pyvesb.eclipse_planet_themes/css/planets-dark.css');
+@import url("platform:/plugin/io.github.pyvesb.eclipse_planet_themes/css/planets.css");
+@import url("platform:/plugin/io.github.pyvesb.eclipse_planet_themes/css/planets-dark.css");
 
 ColorDefinition#io-github-pyvesb-eclipse_planet_themes-BACKGROUND_COLOR {
   color: #282e43;
@@ -269,6 +269,7 @@ IEclipsePreferences#org-eclipse-cdt-ui:io-github-pyvesb-eclipse_planet_themes-ne
     'org.eclipse.cdt.internal.ui.text.doctools.single         =	196, 217, 240' 	/* COMMENT */
 }
 
+/* Not necessary at the moment
 IEclipsePreferences#org-eclipse-egit-ui:io-github-pyvesb-eclipse_planet_themes-neptune {
 	preferences:
 		'DiffAddBackgroundColor=11,121,90'
@@ -284,3 +285,4 @@ IEclipsePreferences#org-eclipse-egit-ui:io-github-pyvesb-eclipse_planet_themes-n
 		'UncommittedChangeBackgroundColor=42,42,42'
 		'UncommittedChangeForegroundColor=114,157,186';
 }
+*/

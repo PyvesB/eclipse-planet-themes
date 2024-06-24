@@ -155,6 +155,7 @@ IEclipsePreferences#org-eclipse-cdt-ui:io-github-pyvesb-eclipse_planet_themes-pl
     'semanticHighlighting.functionDeclaration.enabled=true'
     'semanticHighlighting.functionDeclaration.bold=true'
     'semanticHighlighting.globalVariable.enabled=true'
+    'semanticHighlighting.globalVariable.italic=false'
     'semanticHighlighting.localVariable.enabled=true'
     'semanticHighlighting.localVariableDeclaration.enabled=true'
     'semanticHighlighting.macroDefinition.enabled=true'
