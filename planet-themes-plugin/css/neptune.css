@@ -164,54 +164,6 @@ IEclipsePreferences#org-eclipse-pde-ui:io-github-pyvesb-eclipse_planet_themes-ne
     'editor.color.xml_comment=196,217,240';
 }
 
-
-/* Color Palette (This is informative, there is no way of interpolating this into preference tag) */
-ColorDefinition#io-github-pyvesb-eclipse_planet_themes-DEFAULT {
-  color: rgb(38,  144, 219); 
-}
-ColorDefinition#io-github-pyvesb-eclipse_planet_themes-STRING {
-  color: rgb(84,  120, 234); 
-}
-ColorDefinition#io-github-pyvesb-eclipse_planet_themes-COMMENT {
-  color: rgb(196, 217, 240); 
-}
-ColorDefinition#io-github-pyvesb-eclipse_planet_themes-PREPROC {
-  color: rgb(105, 125, 213); 
-}
-ColorDefinition#io-github-pyvesb-eclipse_planet_themes-KEYWORD {
-  color: rgb(105, 159, 213); 
-}
-ColorDefinition#io-github-pyvesb-eclipse_planet_themes-NUMBERS {
-  color: rgb(104, 151, 187); 
-}
-ColorDefinition#io-github-pyvesb-eclipse_planet_themes-FUNCTION {
-  color: rgb(62,  106, 229); 
-}
-ColorDefinition#io-github-pyvesb-eclipse_planet_themes-LOCAL_VARS {
-  color: rgb(67,  223, 247); 
-}
-ColorDefinition#io-github-pyvesb-eclipse_planet_themes-GLOBAL_VARS {
-  color: rgb(46,  68,  107); 
-}
-ColorDefinition#io-github-pyvesb-eclipse_planet_themes-TYPEDEF {
-  color: rgb(121, 171, 255); 
-}
-ColorDefinition#io-github-pyvesb-eclipse_planet_themes-STRUCT {
-  color: rgb(71, 96,  181); 
-}
-ColorDefinition#io-github-pyvesb-eclipse_planet_themes-STRUCT_FIELD {
-  color: rgb(82,  117, 237); 
-}
-ColorDefinition#io-github-pyvesb-eclipse_planet_themes-MACRO {
-  color: rgb(75,  89,  196); 
-}
-ColorDefinition#io-github-pyvesb-eclipse_planet_themes-ENUM {
-  color: rgb(129, 155, 204); 
-}
-ColorDefinition#io-github-pyvesb-eclipse_planet_themes-DEBUG {
-  color: rgb(255, 255, 0); 
-}
-
 IEclipsePreferences#org-eclipse-cdt-ui:io-github-pyvesb-eclipse_planet_themes-neptune {
   preferences:
     'asm_directive                                            = 8,   144, 219' 	/* DEFAULT */
@@ -229,12 +181,6 @@ IEclipsePreferences#org-eclipse-cdt-ui:io-github-pyvesb-eclipse_planet_themes-ne
     'pp_default                                               = 38,  144, 219' 	/* DEFAULT */ 
     'pp_directive                                             = 105, 125, 213' 	/* PREPROC */
     'pp_header                                                = 84,  120, 234' 	/* STRING */
-    'semanticHighlighting.annotation.color                    = 196, 181, 184'
-    'semanticHighlighting.number.color                        = 104, 151, 187' 	/* NUMBERS */
-    'semanticHighlighting.recordKeyword.color                 = 105, 159, 213' 	/* KEYWORD */
-    'semanticHighlighting.restrictedKeywords.color            = 105, 159, 213'	/* KEYWORD */
-    'semanticHighlighting.varKeyword.color                    = 105, 159, 213' 	/* KEYWORD */
-    'semanticHighlighting.yieldKeyword.color                  = 121, 171, 255'  /* TYPEDEF */
     'semanticHighlighting.class.color                         = 71,  96,  181' 	/* STRUCT */
     'semanticHighlighting.enum.color                          = 129, 155, 204' 	/* ENUM */
     'semanticHighlighting.enumerator.color                    = 82,  117, 237' 	/* STRUCT_FIELD */
@@ -265,24 +211,8 @@ IEclipsePreferences#org-eclipse-cdt-ui:io-github-pyvesb-eclipse_planet_themes-ne
     'sourceHoverBackgroundColor                               = 40,  46,  67'
     'inactiveCodeColor                                        = 30,  30,  30'
     'org.eclipse.cdt.internal.ui.text.doctools.multi          = 196, 217, 240' 	/* COMMENT */
-    'org.eclipse.cdt.internal.ui.text.doctools.recognizedTag  = 30,120,155'
+    'org.eclipse.cdt.internal.ui.text.doctools.recognizedTag  = 30,  120, 155'
     'org.eclipse.cdt.internal.ui.text.doctools.single         =	196, 217, 240' 	/* COMMENT */
+    'org.eclipse.cdt.ui.occurrenceIndicationColor             = 70,  80,  110'
+		'org.eclipse.cdt.ui.writeOccurrenceIndicationColor        = 80,  80,  120'
 }
-
-/* Not necessary at the moment
-IEclipsePreferences#org-eclipse-egit-ui:io-github-pyvesb-eclipse_planet_themes-neptune {
-	preferences:
-		'DiffAddBackgroundColor=11,121,90'
-		'DiffAddForegroundColor=216,254,245'
-		'DiffHeadlineBackgroundColor=71,71,71'
-		'DiffHeadlineForegroundColor=242,242,242'
-		'DiffHunkBackgroundColor=53,97,113'
-		'DiffHunkForegroundColor=233,242,254'
-		'DiffRemoveBackgroundColor=117,2,36'
-		'DiffRemoveForegroundColor=255,232,237'
-		'IgnoredResourceBackgroundColor=42,42,42'
-		'IgnoredResourceForegroundColor=120,120,120'
-		'UncommittedChangeBackgroundColor=42,42,42'
-		'UncommittedChangeForegroundColor=114,157,186';
-}
-*/

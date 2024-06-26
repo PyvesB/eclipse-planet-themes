@@ -180,8 +180,6 @@ IEclipsePreferences#org-eclipse-cdt-ui:io-github-pyvesb-eclipse_planet_themes-pl
     'pp_default                                               = 236, 154, 24'
     'pp_directive                                             = 189, 51,  30'
     'pp_header                                                = 189, 51,  30'
-    'semanticHighlighting.annotation.color                    = 189, 51,  30'
-    'semanticHighlighting.number.color                        = 189, 51,  30'
     'semanticHighlighting.class.color                         = 219, 162, 38'
     'semanticHighlighting.enum.color                          = 219, 162, 38'
     'semanticHighlighting.enumerator.color                    = 219, 141, 38'
@@ -212,6 +210,8 @@ IEclipsePreferences#org-eclipse-cdt-ui:io-github-pyvesb-eclipse_planet_themes-pl
     'sourceHoverBackgroundColor                               = 34,  31,  35'
     'inactiveCodeColor                                        = 30,  30,  30'
     'org.eclipse.cdt.internal.ui.text.doctools.multi          = 240, 218, 196'
-    'org.eclipse.cdt.internal.ui.text.doctools.recognizedTag  = 30,120,155'
+    'org.eclipse.cdt.internal.ui.text.doctools.recognizedTag  = 30,  120, 155'
     'org.eclipse.cdt.internal.ui.text.doctools.single         =	240, 218, 196'
+    'org.eclipse.cdt.ui.occurrenceIndicationColor             = 80,  70,  85'
+		'org.eclipse.cdt.ui.writeOccurrenceIndicationColor        = 100, 90,  110'
 }
