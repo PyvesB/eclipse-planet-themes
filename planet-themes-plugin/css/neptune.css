@@ -213,6 +213,10 @@ IEclipsePreferences#org-eclipse-cdt-ui:io-github-pyvesb-eclipse_planet_themes-ne
     'org.eclipse.cdt.internal.ui.text.doctools.multi          = 196, 217, 240' 	/* COMMENT */
     'org.eclipse.cdt.internal.ui.text.doctools.recognizedTag  = 30,  120, 155'
     'org.eclipse.cdt.internal.ui.text.doctools.single         =	196, 217, 240' 	/* COMMENT */
-    'org.eclipse.cdt.ui.occurrenceIndicationColor             = 70,  80,  110'
-		'org.eclipse.cdt.ui.writeOccurrenceIndicationColor        = 80,  80,  120'
+}
+
+IEclipsePreferences#org-eclipse-ui-editors:org-eclipse-cdt-ui { 
+  preferences:
+  'org.eclipse.cdt.ui.occurrenceIndicationColor             = 70,  80,  110'
+  'org.eclipse.cdt.ui.writeOccurrenceIndicationColor        = 80,  80,  120'
 }
