@@ -162,3 +162,61 @@ IEclipsePreferences#org-eclipse-pde-ui:io-github-pyvesb-eclipse_planet_themes-pl
     'editor.color.tag=116,84,225'
     'editor.color.xml_comment=240,218,196';
 }
+
+IEclipsePreferences#org-eclipse-cdt-ui:io-github-pyvesb-eclipse_planet_themes-pluto {
+  preferences:
+    'asm_directive                                            = 236, 154, 24'
+    'asm_label                                                = 236, 154, 24'
+    'c_braces                                                 =	236, 154, 24'
+    'c_comment_task_tag                                       = 236, 154, 24'
+    'c_default                                                = 236, 154, 24'
+    'c_keyword                                                = 116, 84,  225'
+    'c_multi_line_comment                                     = 240, 218, 196'
+    'c_numbers                                                = 189, 51,  30'
+    'c_operators                                              = 236, 154, 24'
+    'c_single_line_comment                                    = 240, 218, 196'
+    'c_string                                                 = 189, 51,  30'
+    'c_type                                                   = 116, 84,  225'
+    'pp_default                                               = 189, 51,  30'
+    'pp_directive                                             = 189, 51,  30'
+    'pp_header                                                = 189, 51,  30'
+    'semanticHighlighting.class.color                         = 219, 162, 38'
+    'semanticHighlighting.enum.color                          = 219, 116, 38'
+    'semanticHighlighting.enumerator.color                    = 219, 116, 38'
+    'semanticHighlighting.externalSDK.color                   = 116, 84,  225'
+    'semanticHighlighting.field.color                         = 219, 162, 38'
+    'semanticHighlighting.function.color                      = 202, 202, 202'
+    'semanticHighlighting.functionDeclaration.color           = 202, 202, 202'
+    'semanticHighlighting.globalVariable.color                = 189, 51,  30'
+    'semanticHighlighting.localVariable.color                 = 219, 162, 38'
+    'semanticHighlighting.localVariableDeclaration.color      = 219, 162, 38'
+    'semanticHighlighting.macroDefinition.color               = 156, 73,  61'
+    'semanticHighlighting.method.color                        = 202, 202, 202'
+    'semanticHighlighting.methodDeclaration.color             = 202, 202, 202'
+    'semanticHighlighting.namespace.color                     = 219, 162, 38'
+    'semanticHighlighting.parameterVariable.color             = 153, 121, 52'
+    'semanticHighlighting.staticField.color                   = 219, 162, 38'
+    'semanticHighlighting.staticMethod.color                  = 219, 162, 38'
+    'semanticHighlighting.typedef.color                       = 219, 162, 38'
+    'semanticHighlighting.typeParameter.color                 = 219, 162, 38'
+    'buildConsoleInfoStreamColor                              = 18,  144, 195'
+    'buildConsoleOutputStreamColor                            = 200, 200, 200'
+    'buildConsoleErrorStreamColor                             = 163, 5,   5'
+    'buildConsoleBackgroundColor                              = 40,  46,  67'
+    'buildConsoleProblemBackgroundColor                       = 130, 6,   12'
+    'buildConsoleProblemWarningBackgroundColor                = 150, 88,  11'
+    'buildConsoleProblemInfoBackgroundColor                   = 122, 131, 235'
+    'buildConsoleProblemHighlightedColor                      = 255, 0,   0'
+    'sourceHoverBackgroundColor                               = 34,  31,  35'
+    'inactiveCodeColor                                        = 30,  30,  30'
+    'org.eclipse.cdt.internal.ui.text.doctools.multi          = 240, 218, 196'
+    'org.eclipse.cdt.internal.ui.text.doctools.recognizedTag  = 30,  120, 155'
+    'org.eclipse.cdt.internal.ui.text.doctools.single         =	240, 218, 196'
+
+}
+
+IEclipsePreferences#org-eclipse-ui-editors:org-eclipse-cdt-ui { 
+  preferences:
+  'org.eclipse.cdt.ui.occurrenceIndicationColor             = 80,  70,  85'
+  'org.eclipse.cdt.ui.writeOccurrenceIndicationColor        = 100, 90,  110'
+}

@@ -73,7 +73,8 @@ IEclipsePreferences#org-eclipse-debug-ui:io-github-pyvesb-eclipse_planet_themes-
   preferences:
     'org.eclipse.debug.ui.consoleBackground=40,46,67'
     'org.eclipse.debug.ui.errorColor=207,9,51'
-    'org.eclipse.debug.ui.inColor=130,97,239';
+    'org.eclipse.debug.ui.inColor=130,97,239'
+    'org.eclipse.debug.ui.outColor=255,255,255';
 }
 
 IEclipsePreferences#org-eclipse-jdt-ui:io-github-pyvesb-eclipse_planet_themes-neptune {
@@ -161,4 +162,61 @@ IEclipsePreferences#org-eclipse-pde-ui:io-github-pyvesb-eclipse_planet_themes-ne
     'editor.color.string=207,9,51'
     'editor.color.tag=105,159,213'
     'editor.color.xml_comment=196,217,240';
+}
+
+IEclipsePreferences#org-eclipse-cdt-ui:io-github-pyvesb-eclipse_planet_themes-neptune {
+  preferences:
+    'asm_directive                                            = 8,   144, 219' 	/* DEFAULT */
+    'asm_label                                                = 38,  144, 219' 	/* DEFAULT */
+    'c_braces                                                 =	38,  144, 219' 	/* DEFAULT */
+    'c_comment_task_tag                                       = 196, 217, 240' 	/* COMMENT */
+    'c_default                                                = 146, 121, 255' 	/* DEFAULT2 */
+    'c_keyword                                                = 105, 159, 213' 	/* KEYWORD */
+    'c_multi_line_comment                                     = 196, 217, 240' 	/* COMMENT */
+    'c_numbers                                                = 104, 151, 187' 	/* NUMBERS */
+    'c_operators                                              = 38,  144, 219' 	/* DEFAULT */
+    'c_single_line_comment                                    = 196, 217, 240' 	/* COMMENT */
+    'c_string                                                 = 84,  120, 234' 	/* STRING */
+    'c_type                                                   = 105, 159, 213' 	/* KEYWORD */
+    'pp_default                                               = 38,  144, 219' 	/* DEFAULT */ 
+    'pp_directive                                             = 105, 125, 213' 	/* PREPROC */
+    'pp_header                                                = 84,  120, 234' 	/* STRING */
+    'semanticHighlighting.class.color                         = 71,  96,  181' 	/* STRUCT */
+    'semanticHighlighting.enum.color                          = 129, 155, 204' 	/* ENUM */
+    'semanticHighlighting.enumerator.color                    = 82,  117, 237' 	/* STRUCT_FIELD */
+    'semanticHighlighting.externalSDK.color                   = 63,  236, 193'
+    'semanticHighlighting.field.color                         = 82,  117, 237'  /* STRUCT_FIELD */
+    'semanticHighlighting.function.color                      = 104, 151, 187'  /* FUNCTION */
+    'semanticHighlighting.functionDeclaration.color           = 62,  106, 229'  /* FUNCTION */
+    'semanticHighlighting.globalVariable.color                = 68,  164, 159'
+    'semanticHighlighting.localVariable.color                 = 67,  223, 247'  /* LOCAL VARS */
+    'semanticHighlighting.localVariableDeclaration.color      = 67,  223, 247'  /* LOCAL VARS */
+    'semanticHighlighting.macroDefinition.color               = 46,  62,  177'  /* MACRO */
+    'semanticHighlighting.method.color                        = 62,  106, 229'  /* FUNCTION */
+    'semanticHighlighting.methodDeclaration.color             = 104, 151, 187'  /* FUNCTION */
+    'semanticHighlighting.namespace.color                     = 121, 171, 255'  /* TYPEDEF */
+    'semanticHighlighting.parameterVariable.color             = 67,  223, 247' 	/* LOCAL VARS */
+    'semanticHighlighting.staticField.color                   = 67,  223, 247' 	/* LOCAL VARS */
+    'semanticHighlighting.staticMethod.color                  = 67,  223, 247' 	/* LOCAL VARS */
+    'semanticHighlighting.typedef.color                       = 121, 171, 255' 	/* TYPEDEF */
+    'semanticHighlighting.typeParameter.color                 = 67,  223, 247' 	/* LOCAL VARS */
+    'buildConsoleInfoStreamColor                              = 18,  144, 195'
+    'buildConsoleOutputStreamColor                            = 200, 200, 200'
+    'buildConsoleErrorStreamColor                             = 163, 5,   5'
+    'buildConsoleBackgroundColor                              = 40,  46,  67'
+    'buildConsoleProblemBackgroundColor                       = 130, 6,   12'
+    'buildConsoleProblemWarningBackgroundColor                = 150, 88,  11'
+    'buildConsoleProblemInfoBackgroundColor                   = 122, 131, 235'
+    'buildConsoleProblemHighlightedColor                      = 255, 0,   0'
+    'sourceHoverBackgroundColor                               = 40,  46,  67'
+    'inactiveCodeColor                                        = 30,  30,  30'
+    'org.eclipse.cdt.internal.ui.text.doctools.multi          = 196, 217, 240' 	/* COMMENT */
+    'org.eclipse.cdt.internal.ui.text.doctools.recognizedTag  = 30,  120, 155'
+    'org.eclipse.cdt.internal.ui.text.doctools.single         =	196, 217, 240' 	/* COMMENT */
+}
+
+IEclipsePreferences#org-eclipse-ui-editors:org-eclipse-cdt-ui { 
+  preferences:
+  'org.eclipse.cdt.ui.occurrenceIndicationColor             = 70,  80,  110'
+  'org.eclipse.cdt.ui.writeOccurrenceIndicationColor        = 80,  80,  120'
 }

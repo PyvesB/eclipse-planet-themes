@@ -141,3 +141,33 @@ IEclipsePreferences#org-eclipse-jdt-ui:io-github-pyvesb-eclipse_planet_themes-pl
     'semanticHighlighting.varKeyword.bold=true'
     'semanticHighlighting.yieldKeyword.bold=true';
 }
+
+IEclipsePreferences#org-eclipse-cdt-ui:io-github-pyvesb-eclipse_planet_themes-planets {
+  preferences:
+    'semanticHighlighting.class.enabled=true'
+    'semanticHighlighting.class.bold=true'
+    'semanticHighlighting.enum.enabled=true'
+    'semanticHighlighting.enumerator.enabled=true'
+    'semanticHighlighting.enum.italic=true'
+    'semanticHighlighting.externalSDK.enabled=true'
+    'semanticHighlighting.field.enabled=true'
+    'semanticHighlighting.function.enabled=true'   
+    'semanticHighlighting.functionDeclaration.enabled=true'
+    'semanticHighlighting.functionDeclaration.bold=true'
+    'semanticHighlighting.globalVariable.enabled=true'
+    'semanticHighlighting.globalVariable.italic=false'
+    'semanticHighlighting.localVariable.enabled=true'
+    'semanticHighlighting.localVariableDeclaration.enabled=true'
+    'semanticHighlighting.macroDefinition.enabled=true'
+    'semanticHighlighting.macroDefinition.bold=true'
+    'semanticHighlighting.method.enabled=true'
+    'semanticHighlighting.methodDeclaration.enabled=true'
+    'semanticHighlighting.methodDeclaration.bold=true'
+    'semanticHighlighting.namespace.enabled=true'
+    'semanticHighlighting.parameterVariable.enabled=true'
+    'semanticHighlighting.staticField.enabled=true'
+    'semanticHighlighting.staticMethod.enabled=true'
+    'semanticHighlighting.typedef.enabled=true'
+    'semanticHighlighting.typedef.bold=true'
+    'semanticHighlighting.typeParameter.enabled=true'
+}
