@@ -2,3 +2,4 @@ target/
 .polyglot.*
 *.prefs
 /.metadata/
+.DS_Store
