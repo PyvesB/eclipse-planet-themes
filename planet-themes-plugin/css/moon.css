@@ -5,7 +5,7 @@ ColorDefinition#io-github-pyvesb-eclipse_planet_themes-BACKGROUND_COLOR {
 }
 
 ColorDefinition#io-github-pyvesb-eclipse_planet_themes-ACCENT_COLOR {
-  color: #909090;
+  color: #b0b0b0;
 }
 
 ColorDefinition#io-github-pyvesb-eclipse_planet_themes-INTERACTION_COLOR {
@@ -20,8 +20,8 @@ SashForm {
 IEclipsePreferences#org-eclipse-ui-editors:io-github-pyvesb-eclipse_planet_themes-moon {
   preferences:
     'AbstractTextEditor.Color.Background=241,241,241'
-    'AbstractTextEditor.Color.SelectionBackground=190,190,190'
-    'currentLineColor=220,220,220'
+    'AbstractTextEditor.Color.SelectionBackground=200,200,200'
+    'currentLineColor=225,225,225'
     'searchResultIndicationColor=128,128,128';
 }
 
