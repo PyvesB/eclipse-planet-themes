@@ -30,6 +30,7 @@ IEclipsePreferences#org-eclipse-ui-workbench:io-github-pyvesb-eclipse_planet_the
     'CONTENT_ASSIST_BACKGROUND_COLOR=241,241,241'
     'org.eclipse.egit.ui.UncommittedChangeBackgroundColor=255,255,255'
     'org.eclipse.jdt.ui.Javadoc.backgroundColor=241,241,241'
+	'org.eclipse.ui.editors.rangeIndicatorColor=200,200,200'
     'org.eclipse.ui.workbench.INFORMATION_BACKGROUND=241,241,241';
 }
 
