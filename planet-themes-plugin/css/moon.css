@@ -1,5 +1,9 @@
 @import url("platform:/plugin/io.github.pyvesb.eclipse_planet_themes/css/planets.css");
 
+Shell * {
+  color: black;
+}
+
 ColorDefinition#io-github-pyvesb-eclipse_planet_themes-BACKGROUND_COLOR {
   color: #f1f1f1;
 }
@@ -21,6 +25,7 @@ IEclipsePreferences#org-eclipse-ui-editors:io-github-pyvesb-eclipse_planet_theme
   preferences:
     'AbstractTextEditor.Color.Background=241,241,241'
     'AbstractTextEditor.Color.SelectionBackground=200,200,200'
+    'AbstractTextEditor.Color.Foreground.SystemDefault=false'
     'currentLineColor=225,225,225'
     'searchResultIndicationColor=128,128,128';
 }
