@@ -25,7 +25,6 @@ IEclipsePreferences#org-eclipse-ui-editors:io-github-pyvesb-eclipse_planet_theme
   preferences:
     'AbstractTextEditor.Color.Background=241,241,241'
     'AbstractTextEditor.Color.SelectionBackground=200,200,200'
-    'AbstractTextEditor.Color.Foreground.SystemDefault=false'
     'currentLineColor=225,225,225'
     'searchResultIndicationColor=128,128,128';
 }

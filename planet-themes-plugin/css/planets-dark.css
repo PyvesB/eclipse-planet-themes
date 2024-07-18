@@ -59,7 +59,6 @@ IEclipsePreferences#org-eclipse-jdt-ui:io-github-pyvesb-eclipse_planet_themes-pl
 
 IEclipsePreferences#org-eclipse-ui-editors:io-github-pyvesb-eclipse_planet_themes-planets-dark {
   preferences:
-    'AbstractTextEditor.Color.Foreground.SystemDefault=false'
     'AbstractTextEditor.Color.Foreground=202,202,202'
     'changeIndicationColor=0,0,0'
     'hyperlinkColor.SystemDefault=false'

@@ -121,6 +121,7 @@ ThemesExtension {
 IEclipsePreferences#org-eclipse-ui-editors:io-github-pyvesb-eclipse_planet_themes-planets {
   preferences:
     'AbstractTextEditor.Color.Background.SystemDefault=false'
+    'AbstractTextEditor.Color.Foreground.SystemDefault=false'
     'AbstractTextEditor.Color.SelectionBackground.SystemDefault=false'
     'AbstractTextEditor.Color.SelectionForeground.SystemDefault=false'
     'AbstractTextEditor.Color.SelectionForeground=0,0,0'
