@@ -3,4 +3,5 @@
 
 Button[style~='SWT.PUSH'] {
   background-color: unset;
+  color: unset;
 }
